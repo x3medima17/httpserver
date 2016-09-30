@@ -13,6 +13,7 @@ before_install:
 before_script:
 - make
 - cd tests 
+- g++ --versio
 script: 
   python test.py
 branches:
