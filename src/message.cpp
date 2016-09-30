@@ -1,6 +1,7 @@
 
 #include <string>
 #include <iostream>
+#include <stdexcept>
 #include <netinet/in.h>
 #include <vector>
 #include <bitset>

@@ -3,6 +3,7 @@
 #include <iostream>
 #include <fstream> 
 #include <utility>
+#include <stdexcept>
 #include "socket.h"
 #include "message.h"
 

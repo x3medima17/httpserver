@@ -5,6 +5,7 @@
 #include <sys/socket.h>
 #include <netinet/in.h>
 #include <netdb.h>
+#include <stdexcept>
 #include "socket.h"
 #include <utility>
 #include <vector>
