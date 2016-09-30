@@ -42,3 +42,12 @@ $ ./client localhost 8080 file.txt
 ~~~
 It will create file `out.txt`, identical to `file.txt`.
 
+
+Tests
+-----
+To run tests make project and run test.py
+~~~ sh
+$ make
+$ cd tests
+$ python test.py
+~~~
