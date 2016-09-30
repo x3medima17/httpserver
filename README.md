@@ -40,5 +40,5 @@ Client is a little bit more complex, it takes three arguments: host, port, file 
 ~~~ sh
 $ ./client localhost 8080 file.txt
 ~~~
-
+It will create file `out.txt`, identical to `file.txt`.
 
