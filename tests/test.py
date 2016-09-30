@@ -44,3 +44,4 @@ if __name__ == "__main__":
 		os.remove("out.txt")
 	os.chdir("../")
 	shutil.rmtree("tmp")
+	print("SUCCESS: All tests passed")
