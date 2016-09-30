@@ -1,26 +1,18 @@
-language: cpp
-compiler:
-- g++
-os:
-- linux
 
-addons:
-  apt:
-    sources:
-    # add PPAs with more up-to-date toolchains
-    - ubuntu-toolchain-r-test
-    - llvm-toolchain-precise-3.6
-    packages:
-    # install toolchains
-    - gcc-5
-    - g++-5
+sudo: required
+    language: cpp
+    compiler:
+      - gcc
+    install:
+    - if [ "$CXX" = "g++" ]; then export CXX="g++-4.8" CC="gcc-4.8"; fi
+    addons:
+      apt:
+        sources:
+        - ubuntu-toolchain-r-test
+        packages:
+        - gcc-4.8
+        - g++-4.8
 
-
-before_install:
-- echo $LANG
-- echo $LC_ALL
-- sudo apt-get update
-- sudo apt-get install -y g++
 before_script:
 - make
 - cd tests 
