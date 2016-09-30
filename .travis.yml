@@ -4,14 +4,6 @@ compiler:
 os:
 - linux
 
-before_install:
-
-
-
-
-
-install:
-
 
 
 before_install:
