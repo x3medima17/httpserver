@@ -1,5 +1,5 @@
-#ifndef SOKET_H_
-#define SCOKET_H_
+#ifndef SOCKET_H_
+#define SOCKET_H_
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -14,16 +14,17 @@
 
 
 class Socket {
-protected:
+private:
 	enum socket_types {CLIENT, SERVER};
 	socket_types socket_type;
-	int sockfd, port, n;
+	int port, n;
 	sockaddr_in serv_addr, cli_addr;
 	hostent* server;
 
 	void create_base();
-	~Socket();
+	
 public:
+	int sockfd;
 	Socket(int port);
 	Socket(std::string host, int port);
 	Socket();
@@ -31,11 +32,13 @@ public:
 	void listen(int n);
 	void connect();
 	Socket accept();
-	/*std::pair<int, std::string> recv(int length);
+	std::pair<int, std::string> recv(int length);
+	
 	int send(std::string msg);
-	void close();
-	*/
 
+	void close();
+	
+	~Socket();
 
 };
 
