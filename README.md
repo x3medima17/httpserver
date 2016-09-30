@@ -1,7 +1,7 @@
 # Socket File Transfer
 
-[![Build Status](https://travis-ci.org/x3medima17/DoublyLinkedList.svg?branch=dev)](https://travis-ci.org/x3medima17/DoublyLinkedList)
 
+Repository link: https://github.com/x3medima17/socket
 
 This is an implemetation of ASCII file transmission through sockets, written for Network Programming course, KAIST .
 
