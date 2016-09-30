@@ -9,6 +9,7 @@ before_install:
 - echo $LANG
 - echo $LC_ALL
 - sudo apt-get install -y g++
+- sudo apt-get update
 before_script:
 - make
 - cd tests 
@@ -21,3 +22,4 @@ env:
   global:
   - LANG="en_US.UTF-8"
   
+
