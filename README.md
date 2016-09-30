@@ -5,12 +5,14 @@
 
 This is an implemetation of ASCII file transmission through sockets, written for Network Programming course, KAIST .
 
-The folowing 'best practices' were used.
+The folowing 'tools' were used.
   - Object-Oriented Programming
-  - Header Files
   - Tests
   - Continuous Integration
   - Github
+  - Ubuntu 16.04 server
+  - Vim 
+
 
  
 Instalation
@@ -21,12 +23,12 @@ First of all clone or download this repository.
 $ git clone https://github.com/x3medima17/socket
 ~~~
 
-Then make project.
+Then make project, all executable files will be placed in `bin` folder.
 ~~~ sh
 $ make
 ~~~
 
-Using
+Usage
 -----
 To use it you need to start two processes, one for `client` and another one for `server`.
 Server accepts only one argument, port to run on. Ex:
