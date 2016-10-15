@@ -39,7 +39,7 @@ public:
 	void close();
 	
 	~Socket();
-
+	Socket operator=(const Socket&);
 };
 
 #endif

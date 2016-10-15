@@ -8,19 +8,10 @@
 
 #include "message.h"
 
-Message::Message(): version(0x04), userid(0x08), length(0), seq(0), command(0), data(""){};
+Message::Message(): length(0),data(""){};
 
-Message::Message(unsigned short seq, unsigned short command, std::string data):Message()
-{
-	this->seq = seq;
-	this->command = command;
-	this->data = data;
-}
+Message::Message(std::string data): length(data.length() + sizeof(length)), data(data){}
 
-Message::Message(std::string packed):Message()
-{
-	this->packed = packed;
-}
 
 std::string Message::get_data() const
 {
@@ -29,33 +20,36 @@ std::string Message::get_data() const
 
 Message Message::get_msg(Socket &sock)
 {
-        Message msg(sock.recv(8).second);
-        msg.unpack();
-	unsigned short  length = msg.get_length();
-        unsigned short command = msg.get_command();
-        int seq = msg.get_seq(); 
-	std::string data = sock.recv(length - 8).second;
-        Message out(seq, command, data);
-        out.compute_length();
+	//Get length
+        std::string s_length = sock.recv(sizeof(length)).second;
+       	unsigned short length =  ntohs(s_length[0] << 8) | s_length[1];
+
+	std::string data = sock.recv(length - sizeof(length)).second;
+        Message out(data);
         return out;
 
 }
 
-void Message::print_binary(std::string str) const
+void Message::print_binary(std::string str) 
 {
 	for(auto c : str)
 		std::cout<< std::bitset<8>(c)<<' ';
-	std::cout<<'\n';
+	std::cout<<std::endl;
 }
 
-std::string Message::to_string() const
+std::string Message::__to_string() const
 {
-	if (this->packed.empty())
-		throw std::runtime_error("Pack first");
-	return this->packed;
+	std::string packed;
+        unsigned short tmp = htons(this->length);
+        unsigned char H =  (unsigned char)(tmp >> 8);//tmp & 0xff;
+        unsigned char L = (unsigned char)(tmp & 0xff);//(tmp >> 8) & 0xff;
+	packed += H;
+	packed += L;
+	packed += this->data;
+	return packed;
 }
-
-void Message::pack()
+/*
+void pack()
 {
 	compute_length();
 	std::string packed;
@@ -86,35 +80,17 @@ void Message::unpack()
 	this->command = ntohs((this->packed[6] << 8) | this->packed[7]);
 	this->data = this->packed.substr(8,this->packed.length()-8);
 }
-
-unsigned short Message::get_seq() const
-{
-	return this->seq;
-}
-
-unsigned short Message::get_command() const
-{
-	return this->command;
-}
+*/
 
 unsigned short Message::get_length() const
 {
 	return this->length;
 }
 
-void Message::compute_length() 
-{
-	unsigned short base_size = sizeof(version) + sizeof(userid) + sizeof(seq) + sizeof(length) + sizeof(command);
-	this->length = base_size + this->data.length();
-} 
 
 void Message::print() const
 {
-	std::cout<<"Version: "<<(int)this->version<<'\n';
-	std::cout<<"UserID: "<<(int)this->userid<<'\n';
-	std::cout<<"Seq: "<<this->seq<<'\n';
 	std::cout<<"Length: "<<this->length<<'\n';
-	std::cout<<"Command: "<<this->command<<'\n';
 	std::cout<<"Data: "<<this->data<<'\n';
 }
 

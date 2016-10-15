@@ -121,7 +121,7 @@ std::pair<int, std::string> Socket::recv(int length)
         	throw std::runtime_error("ERROR reading from socket");
 	}
 
-	std::string s(buff.begin(), buff.end());
+	std::string s(buff.begin(), buff.begin()+n);
     	return std::make_pair(n, s);
 
 
@@ -149,5 +149,21 @@ Socket::~Socket()
 {
 	this->close();
 }
+
+Socket Socket::operator=(const Socket& rhs)
+{
+	Socket s;
+	s.socket_type = rhs.socket_type;
+	s.port = rhs.port;
+	s.n = rhs.n;
+	s.serv_addr = rhs.serv_addr;
+	s.cli_addr = rhs.cli_addr;
+	s.server = rhs.server; 
+	//std::cout<<s.socket_type<<std::endl;
+	return s;
+}
+
+
+
 
 
