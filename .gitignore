@@ -1,6 +1,7 @@
 *.swo
 *.swp
 *.swn
+http
 client
 server
 *.o
