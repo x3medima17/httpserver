@@ -17,8 +17,8 @@ HttpResponse::HttpResponse(std::string version, int status,
 		{404, "Not Found"},
 		{405, "Method not allowed"}
 	};
-	auto l_header = std::make_pair("Content-Length",std::to_string(content_length));
-	this->Headers.push_back(l_header);
+	std::string s_content_length = std::to_string(content_length);
+	this->Headers.push_back({"Content-Length", s_content_length});
 }
 
 HttpResponse::HttpResponse():

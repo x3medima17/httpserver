@@ -9,14 +9,12 @@
 
 
 class HttpApplication {
+typedef std::map<std::string, std::shared_ptr<RequestHandler>> MapHand;
 public:
-	std::map<std::string, std::shared_ptr<RequestHandler> > handlers;
+	MapHand handlers;
 	
 public:
-	HttpApplication(
-		std::map<std::string, 
-		std::shared_ptr<RequestHandler> >
-	);
+	HttpApplication(MapHand);
 	HttpApplication();
 };
 
