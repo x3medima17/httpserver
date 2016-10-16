@@ -6,11 +6,16 @@
 #include "HttpResponse.h"
 #include <map>
 
+#include <thread>
+#include <chrono>
+
 class Main : public RequestHandler 
 {
 public:	
 	void get()
 	{
+		int x = 50;
+		std::this_thread::sleep_for(std::chrono::milliseconds(x));
 		render("index.html");
 	}
 };
@@ -25,7 +30,7 @@ int main()
 	HttpApplication app(H);
 	HttpServer server(app);
 	server.bind(8081);
-	server.listen(5);
+	server.listen(500);
 	server.start();
 	return 0;
 }

@@ -7,11 +7,8 @@
 #include <iostream>
 
 
-HttpApplication::HttpApplication(
-		std::map<std::string, 
-		std::shared_ptr<RequestHandler> > handlers
-		): 
-		handlers(handlers)
+HttpApplication::HttpApplication(HttpApplication::MapHand a_handlers): 
+						handlers(a_handlers)
 {}
 
 HttpApplication::HttpApplication(){}

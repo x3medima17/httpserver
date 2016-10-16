@@ -2,7 +2,6 @@
 #include "HttpServer.h"
 #include "HttpResponse.h"
 #include "socket.h"
-#include "message.h"
 
 #include <string>
 #include <map>

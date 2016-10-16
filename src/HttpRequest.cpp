@@ -3,7 +3,8 @@
 #include <iostream>
 
 
-HttpRequest::HttpRequest(http_methods method, std::string URI, std::string version):
+HttpRequest::HttpRequest(http_methods method, std::string URI, 
+			std::string version):
 	method(method), 
 	URI(URI), 
 	version(version), 

@@ -11,21 +11,19 @@ CP = cp
 
 CXX=g++
 
-CFLAGS= -Iinclude/ -std=c++11 
+CFLAGS= -Iinclude/ -std=c++14 
 
 SOURCES = $(wildcard src/*.cpp)
 
-SERVER_SOURCES := $(SOURCES) server.cpp
-CLIENT_SOURCES := $(SOURCES) client.cpp
+SERVER_SOURCES := $(SOURCES) main.cpp
 
 
 OBJECTS=$(SOURCES:%.cpp=$(OBJ_DIR)/%.o)
 
 
 SERVER_EXECUTABLE = server
-CLIENT_EXECUTABLE = client
 
-all: MDIR $(SERVER_EXECUTABLE) $(CLIENT_EXECUTABLE)
+all: $(SERVER_EXECUTABLE) $(CLIENT_EXECUTABLE)
 
 rebuild: clean all
 
@@ -33,14 +31,12 @@ MDIR:
 	$(MKDIR) bin
 
 $(SERVER_EXECUTABLE): 
-	$(CXX) $(CFLAGS) $(SERVER_SOURCES) -o $(BIN_DIR)/server
+	$(CXX) $(CFLAGS) $(SERVER_SOURCES) -o server
 
-$(CLIENT_EXECUTABLE):
-	$(CXX) $(CFLAGS) $(CLIENT_SOURCES) -o $(BIN_DIR)/client
 
 
 clean:
-	rm bin/*
+	rm server 
 	
 
 
