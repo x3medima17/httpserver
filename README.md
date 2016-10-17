@@ -16,7 +16,7 @@ First of all clone or download this repository.
 $ git clone https://github.com/x3medima17/httpserver
 ~~~
 
-Then make project, all executable files will be placed in `bin` folder.
+Then make project, it will produce `server` executable.
 ~~~ sh
 $ make
 ~~~
