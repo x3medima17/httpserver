@@ -23,7 +23,7 @@ OBJECTS=$(SOURCES:%.cpp=$(OBJ_DIR)/%.o)
 
 SERVER_EXECUTABLE = server
 
-all: $(SERVER_EXECUTABLE) $(CLIENT_EXECUTABLE)
+all: $(SERVER_EXECUTABLE) 
 
 rebuild: clean all
 

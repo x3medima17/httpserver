@@ -1,18 +1,11 @@
 # Socket File Transfer
 
 
-Repository link: https://github.com/x3medima17/socket
+Repository link: https://github.com/x3medima17/httpserver
 
-This is an implemetation of ASCII file transmission through sockets, written for Network Programming course, KAIST .
+This is a simple C++ HTTP Server with a small web framework, inspired by [Tornado](<http://www.tornadoweb.org>).
 
-The folowing 'tools' were used.
-  - Object-Oriented Programming
-  - Tests
-  - Continuous Integration
-  - Github
-  - Ubuntu 16.04 server
-  - Vim 
-
+This project is  written for Network Programming course, KAIST.
 
  
 Instalation
@@ -20,7 +13,7 @@ Instalation
 
 First of all clone or download this repository.
 ~~~ sh
-$ git clone https://github.com/x3medima17/socket
+$ git clone https://github.com/x3medima17/httpserver
 ~~~
 
 Then make project, all executable files will be placed in `bin` folder.
@@ -30,24 +23,48 @@ $ make
 
 Usage
 -----
-To use it you need to start two processes, one for `client` and another one for `server`.
-Server accepts only one argument, port to run on. Ex:
+To use it you need to start serveri process. By default it binds to port 8081.
 ~~~ sh
-$ ./server 8080
+$ ./server 
 ~~~
-
-Client is a little bit more complex, it takes three arguments: host, port, file to send. Ex:
-~~~ sh
-$ ./client localhost 8080 file.txt
-~~~
-It will create file `out.txt`, identical to `file.txt`.
+Now you can access http://localhost:8081 from your browser.
 
 
-Tests
------
-To run tests make project and run test.py
-~~~ sh
-$ make
-$ cd tests
-$ python test.py
+Hello, world
+------------
+~~~ cpp
+#include "HttpRequest.h"
+#include "HttpApplication.h"
+#include "RequestHandler.h"
+#include "HttpServer.h"
+#include "HttpResponse.h"
+
+#include <map>
+#include <iostream>
+
+class Main : public RequestHandler
+{
+public:
+        void get()
+        {
+                this->write("Hello, World!");
+        }
+};
+
+int main()
+{
+
+        std::map<std::string, std::shared_ptr<RequestHandler>> H;
+
+        H["/"] = std::shared_ptr<RequestHandler>(new Main);
+
+        HttpApplication app(H);
+        HttpServer server(app);
+        server.bind(8081);
+        server.listen(5);
+        server.start();
+        return 0;
+}
+
+
 ~~~
