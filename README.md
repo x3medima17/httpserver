@@ -1,4 +1,4 @@
-# Socket File Transfer
+# HTTP Server 
 
 
 Repository link: https://github.com/x3medima17/httpserver
@@ -23,7 +23,7 @@ $ make
 
 Usage
 -----
-To use it you need to start serveri process. By default it binds to port 8081.
+To use it you need to start server process. By default it binds to port 8081.
 ~~~ sh
 $ ./server 
 ~~~
@@ -65,6 +65,4 @@ int main()
         server.start();
         return 0;
 }
-
-
 ~~~
