@@ -15,7 +15,8 @@ public:
 	
 public:
 	HttpApplication(MapHand);
-	HttpApplication();
+    HttpApplication();
+
 };
 
 #endif

@@ -18,7 +18,7 @@ HttpResponse::HttpResponse(std::string version, int status,
 		{405, "Method not allowed"}
 	};
 	std::string s_content_length = std::to_string(content_length);
-	this->Headers.push_back({"Content-Length", s_content_length});
+    this->Headers.insert({"Content-Length", s_content_length});
 }
 
 HttpResponse::HttpResponse():
@@ -57,7 +57,7 @@ void HttpResponse::print() const
 
 std::string HttpResponse::__to_string() const
 {
-	std::string out;
+    std::string out("");
 	std::string status_str = StatusCodes.find(status)->second;
 	out += version+" "+std::to_string(status)+" "+status_str+"\r\n";
 	for(auto &header: Headers)

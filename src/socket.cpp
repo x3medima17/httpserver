@@ -1,4 +1,4 @@
-
+#include <arpa/inet.h>
 #include <string>
 #include <iostream>
 #include <sys/types.h>
@@ -67,7 +67,12 @@ void Socket::bind()
 {
 	if(this->socket_type != Socket::SERVER)
 		throw std::runtime_error("Only server can invoke bind()");
-	if (::bind(this->sockfd, (struct sockaddr *) &(this->serv_addr),
+
+    int enable = 1;
+    if (setsockopt(sockfd, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0)
+        throw std::runtime_error("setsockopt(SO_REUSEADDR) failed");
+
+    if (::bind(this->sockfd, (struct sockaddr *) &(this->serv_addr),
 	    sizeof(this->serv_addr)) < 0) 
 		throw std::runtime_error("ERROR on binding");
 }
@@ -139,6 +144,15 @@ int Socket::send(std::string msg)
     	return n;
 }
 
+std::string Socket::get_ip() const
+{
+
+    struct sockaddr_in* pV4Addr = (struct sockaddr_in*)&cli_addr;
+    struct in_addr ipAddr = pV4Addr->sin_addr;
+    char str[INET_ADDRSTRLEN];
+    inet_ntop( AF_INET, &ipAddr, str, INET_ADDRSTRLEN );
+    return std::string(str);
+}
 
 void Socket::close()
 {

@@ -28,41 +28,49 @@ void HttpServer::listen(int n)
 	sock->listen(n);
 }
 
+HttpResponse HttpServer::process_request(const HttpRequest &req) const
+{
+    if(req.get_status() != 0)
+        return HttpResponse(400);
+
+    auto handler_it = app.handlers.find(req.get_uri());
+
+    if(handler_it == app.handlers.end())
+        return  HttpResponse(404);
+
+    auto handler = handler_it->second;
+
+    //Setup handler
+    handler->initialize();
+    handler->remote_ip = sock->get_ip();
+
+    int e405 = 0;
+    switch(req.get_method())
+    {
+        case HttpRequest::GET:
+            handler->get();
+            break;
+        default:
+            e405 = 1;
+            break;
+    }
+    auto response_body = handler->get_response_body();
+    HttpResponse response;
+    if(e405 == 1)
+        response = HttpResponse (405);
+    else
+        response = HttpResponse (200, response_body);
+    return response;
+}
+
 void HttpServer::start()
 {
 	while(1)
 	{
 		Socket client = this->sock->accept();
-		std::cout<<"Got client"<<std::endl;
+        //std::cout<<"Got client"<<std::endl;
 		auto req = get_http_request(client);
-		std::cout<<'*'<<req.get_uri()<<'*'<<std::endl;
-		auto handler_it = app.handlers.find(req.get_uri());
-		if(handler_it == app.handlers.end())
-		{
-			auto response = HttpResponse(404);
-			client.send(response.__to_string());
-			client.close();
-			continue;
-		}
-		auto handler = handler_it->second;
-		handler->initialize();
-		
-		int e405 = 0;
-		switch(req.get_method())
-		{
-			case HttpRequest::GET:
-				handler->get();
-				break;
-			default:
-				e405 = 1;
-				break;
-		}	
-		auto response_body = handler->get_response_body();
-		HttpResponse response;
-		if(e405 == 1)
-			response = HttpResponse (405);
-		else
-			response = HttpResponse (200, response_body); 
+        auto response = process_request(req);
 		client.send(response.__to_string());
 		client.close();
 	}
@@ -75,12 +83,23 @@ HttpRequest HttpServer::get_http_request(Socket &client)
 	do
 	{
 		tmp = client.recv(128);
-		std::cout<<tmp.second<<std::endl;
-		data += tmp.second;
-	} while(data.substr(data.size()-2,2) != "\r\n" );
-	std::cout<<"%"<<data<<"%"<<std::endl;
-	data = data.substr(0,data.size()-2);
-	std::cout<<"->>"<<data<<std::endl;
+        data += tmp.second;
+        if(tmp.first < 2)
+            break;
+    } while(data.substr(data.size()-4,4) != "\r\n\r\n" && tmp.first == 128 );
+
+    // Check for content
+    int clen = 0;
+    if(data.find("Content-Length: ") != std::string::npos)
+    {
+            int p = data.find("Content-Length:");
+            int l = data.find(" ",p);
+            int r = data.find("\r\n",p);
+            clen = std::stoi( data.substr(l+1, r-l) );
+    }
+    if(clen > 0)
+       data += client.recv(clen).second;
+    std::cout<<data<<std::endl;
 	return HttpRequest(data);
 }
 

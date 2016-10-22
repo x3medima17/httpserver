@@ -7,3 +7,14 @@ server
 *.o
 bin/client
 bin/server
+httpserver*
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+requests.log
+ext/
+Testing/
+build/
+CMakeFiles/
+CTestTestfile.cmake
+CMakeLists.txt.user

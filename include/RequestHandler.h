@@ -5,7 +5,8 @@
 
 
 class RequestHandler {
-private:
+friend class HttpServer;
+
 public:
 	virtual void get();
 	RequestHandler();
@@ -16,6 +17,7 @@ protected:
 	void write(std::string);
 	void render(std::string);
 	std::string response_body;
+        std::string remote_ip;
 
 };
 

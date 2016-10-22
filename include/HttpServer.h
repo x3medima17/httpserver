@@ -14,7 +14,9 @@ private:
 	HttpApplication app;
 	std::unique_ptr<Socket> sock;
 	
-	HttpRequest get_http_request(Socket&);	
+        HttpRequest get_http_request(Socket&);
+        HttpResponse process_request(const HttpRequest&) const;
+
 public:
 	HttpServer(HttpApplication app);
 	HttpServer();
