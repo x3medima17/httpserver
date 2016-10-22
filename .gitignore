@@ -12,7 +12,6 @@ CMakeCache.txt
 cmake_install.cmake
 Makefile
 requests.log
-ext/
 Testing/
 build/
 CMakeFiles/
