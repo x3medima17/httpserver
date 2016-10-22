@@ -7,7 +7,7 @@ void RequestHandler::get()
 
 }
 
-RequestHandler::RequestHandler():response_body(""), remote_ip(""){}
+RequestHandler::RequestHandler():response_body(""){}
 
 void RequestHandler::write(std::string str)
 {

@@ -10,6 +10,7 @@
 #include <memory>
 #include <algorithm>    // std::copy
 #include <fstream>
+#include <cassert>
 
 HttpRequest::HttpRequest(http_methods method, std::string URI, 
 			std::string version):
@@ -46,30 +47,34 @@ std::vector<std::string> HttpRequest::split(std::string target, std::string spli
       if (pos == std::string::npos)
          V.push_back(target.substr(i, target.length()));
     }
+    if(V.size() == 0)
+        V.push_back(target);
     return V;
 }
 
 HttpRequest::HttpRequest(std::string raw): HttpRequest()
 {
 
-    auto rows = split(raw,"\r\n");
-    if(rows.size() <= 2)
+    auto tmp = split(raw,"\r\n\r\n");
+
+    if(tmp.size() < 2)
     {
         status = 1;
         return;
     }
-    if(!(rows.back().size() == 0 && rows.at(rows.size()-2).size() == 0))
-    {
-        status = 2;
-        return;
-    }
-    rows.pop_back();
-    rows.pop_back();
+    auto header = split(tmp.front(),"\r\n");
+
+    //merge content
+    std::string content("");
+    for(size_t i=1;i <tmp.size();i++)
+        content += tmp.at(i);
+
     //request line
-    auto request_line = split(rows.front()," ");
+
+    auto request_line = split(header.front()," ");
     if(request_line.size() != 3)
     {
-        status = 3;
+        status = 1;
         return;
     }
 
@@ -81,7 +86,7 @@ HttpRequest::HttpRequest(std::string raw): HttpRequest()
 		this->method = POST;
 	else 
 	{
-        status = 4;
+        status = 1;
 		return;
 	} 
 
@@ -90,9 +95,9 @@ HttpRequest::HttpRequest(std::string raw): HttpRequest()
 
     //Headers
 
-    for(size_t i=1; i<rows.size();i++)
+    for(size_t i=1; i<header.size();i++)
     {
-        auto row = rows.at(i);
+        auto row = header.at(i);
         auto curr = split(row, ": ");
         if(curr.size() != 2)
         {
@@ -101,6 +106,10 @@ HttpRequest::HttpRequest(std::string raw): HttpRequest()
         }
         Headers.insert({curr.front(), curr.back()});
     }
+    if(Headers.find("Content-Length") != Headers.end())
+        assert(Headers["Content-Length"] == std::to_string(content.length()));
+    content_length = content.length();
+    this->content = content;
 }
 
 void HttpRequest::print() const
@@ -121,5 +130,5 @@ std::string HttpRequest::get_version() const { return version; }
 std::string HttpRequest::get_uri() const { return URI; }
 HttpResponse::VecHeaders HttpRequest::get_headers() const { return Headers; }
 int HttpRequest::get_content_length() const { return content_length; }
-
+std::string HttpRequest::get_content() const { return content; }
 

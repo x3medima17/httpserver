@@ -144,7 +144,7 @@ int Socket::send(std::string msg)
     	return n;
 }
 
-std::string Socket::get_ip() const
+std::string Socket::get_remote_ip() const
 {
 
     struct sockaddr_in* pV4Addr = (struct sockaddr_in*)&cli_addr;
@@ -152,6 +152,12 @@ std::string Socket::get_ip() const
     char str[INET_ADDRSTRLEN];
     inet_ntop( AF_INET, &ipAddr, str, INET_ADDRSTRLEN );
     return std::string(str);
+}
+
+int Socket::get_remote_port() const
+{
+    int port_c = (int) ntohs(cli_addr.sin_port);
+    return port_c;
 }
 
 void Socket::close()

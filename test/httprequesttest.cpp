@@ -86,3 +86,27 @@ TEST(req, basic_headers)
 
 }
 
+TEST(req, basic_content)
+{
+    HttpRequest req("GET / HTTP/1.1\r\n"
+                    "Host: facebook.com\r\n"
+                    "User-Agent: Mozilla\r\n"
+                    "Content-Length: 11\r\n"
+                    "\r\n"
+                    "Hello World");
+
+    HttpResponse::VecHeaders Headers;
+    Headers = {
+        {"Host", "facebook.com"},
+        {"User-Agent", "Mozilla"},
+        {"Content-Length", "11" }
+    };
+    EXPECT_EQ(req.get_method(), HttpRequest::http_methods::GET);
+    EXPECT_EQ(req.get_uri(),"/");
+    EXPECT_EQ(req.get_version(),"HTTP/1.1");
+    EXPECT_EQ(req.get_headers(), Headers);
+    EXPECT_EQ(req.get_status(), 0);
+    EXPECT_EQ(req.get_content_length(), 11);
+    EXPECT_EQ(req.get_content(), "Hello World");
+
+}

@@ -2,7 +2,7 @@
 #define REQUESTHANDLER_H_
 
 #include <string>
-
+#include <map>
 
 class RequestHandler {
 friend class HttpServer;
@@ -17,7 +17,7 @@ protected:
 	void write(std::string);
 	void render(std::string);
 	std::string response_body;
-        std::string remote_ip;
+        std::map<std::string, std::string> request;
 
 };
 

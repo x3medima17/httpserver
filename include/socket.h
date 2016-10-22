@@ -33,7 +33,8 @@ public:
 	void connect();
 	Socket accept();
 	std::pair<int, std::string> recv(int length);
-        std::string get_ip() const;
+        std::string get_remote_ip() const;
+        int get_remote_port() const;
 	int send(std::string msg);
 
 	void close();

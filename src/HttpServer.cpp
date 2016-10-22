@@ -28,7 +28,18 @@ void HttpServer::listen(int n)
 	sock->listen(n);
 }
 
-HttpResponse HttpServer::process_request(const HttpRequest &req) const
+
+void HttpServer::setup_handler(std::shared_ptr<RequestHandler> handler)
+{
+    handler->initialize();
+    handler->request = {
+        {"remote_ip" , sock->get_remote_ip()},
+        {"remote_port",  std::to_string(sock->get_remote_port())}
+    };
+
+}
+
+HttpResponse HttpServer::process_request(const HttpRequest &req)
 {
     if(req.get_status() != 0)
         return HttpResponse(400);
@@ -41,8 +52,7 @@ HttpResponse HttpServer::process_request(const HttpRequest &req) const
     auto handler = handler_it->second;
 
     //Setup handler
-    handler->initialize();
-    handler->remote_ip = sock->get_ip();
+    setup_handler(handler);
 
     int e405 = 0;
     switch(req.get_method())

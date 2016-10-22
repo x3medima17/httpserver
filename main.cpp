@@ -15,7 +15,10 @@ public:
     {
         Logger log("requests.log");
         log<<"get";
-        write(this->remote_ip);
+        write("data\n");
+        write(this->request["remote_ip"]);
+        write("\n");
+        write(this->request["remote_port"]);
         //render("index.html");
     }
 };

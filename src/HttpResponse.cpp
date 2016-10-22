@@ -15,7 +15,8 @@ HttpResponse::HttpResponse(std::string version, int status,
 	StatusCodes = std::map<int, std::string>{
 		{200, "OK"},
 		{404, "Not Found"},
-		{405, "Method not allowed"}
+        {405, "Method not allowed"},
+        {400, "Bad Request"}
 	};
 	std::string s_content_length = std::to_string(content_length);
     this->Headers.insert({"Content-Length", s_content_length});
