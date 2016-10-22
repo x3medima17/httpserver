@@ -75,9 +75,12 @@ HttpRequest HttpServer::get_http_request(Socket &client)
 	do
 	{
 		tmp = client.recv(128);
+		std::cout<<tmp.second<<std::endl;
 		data += tmp.second;
 	} while(data.substr(data.size()-2,2) != "\r\n" );
+	std::cout<<"%"<<data<<"%"<<std::endl;
 	data = data.substr(0,data.size()-2);
+	std::cout<<"->>"<<data<<std::endl;
 	return HttpRequest(data);
 }
 

@@ -11,7 +11,7 @@ CP = cp
 
 CXX=g++
 
-CFLAGS= -Iinclude/ -std=c++14 
+CFLAGS= -Iinclude/ -std=c++11 
 
 SOURCES = $(wildcard src/*.cpp)
 

@@ -4,6 +4,7 @@
 #include "RequestHandler.h"
 #include "HttpServer.h"
 #include "HttpResponse.h"
+#include "Logger.h"
 #include <map>
 
 
@@ -12,6 +13,8 @@ class Main : public RequestHandler
 public:	
 	void get()
 	{
+		Logger log("requests.log");
+		log<<"get";
 		render("index.html");
 	}
 };

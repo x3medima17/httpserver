@@ -1,6 +1,10 @@
 #include "HttpRequest.h"
 #include <string>
 #include <iostream>
+ 
+ 
+ 
+#include <exception>
 
 
 HttpRequest::HttpRequest(http_methods method, std::string URI, 
@@ -29,7 +33,16 @@ HttpRequest::HttpRequest(std::string raw): HttpRequest()
 	}
 	
 	//Method
-	std::string str_method = raw.substr(0, pos);
+	std::string str_method;
+	try
+	{
+		str_method = raw.substr(0, pos);
+	}
+	catch(std::exception &e)
+	{
+		std::cout<<"Exception: "<<e.what()<<std::endl;
+		throw 1;
+	}	
 	//std::cout<<raw<<" "<<str_method<<std::endl;
 	if(str_method == "GET")
 		this->method = GET;
@@ -48,8 +61,15 @@ HttpRequest::HttpRequest(std::string raw): HttpRequest()
 		status = 3;
 		return;
 	}
-	URI = raw.substr(pos+1, pos2-pos-1);
-	version = raw.substr(pos2+1);
+	try
+	{
+		URI = raw.substr(pos+1, pos2-pos-1);
+		version = raw.substr(pos2+1);
+	} catch(std::exception &e)
+	{
+		std::cout<<e.what()<<std::endl;
+		throw 2;
+	}
 }
 
 void HttpRequest::print() const
