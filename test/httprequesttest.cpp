@@ -5,7 +5,7 @@
 #include <string>
 TEST(req, basic_get)
 {
-    HttpRequest req("GET / HTTP/1.1\r\n\r\n");
+    HttpRequest req("GET / HTTP/1.1\r\nHost: localhost\r\n\r\n");
 
     EXPECT_EQ(req.get_method(), HttpRequest::http_methods::GET);
     EXPECT_EQ(req.get_uri(),"/");
@@ -17,7 +17,7 @@ TEST(req, basic_get)
 
 TEST(req, basic_post)
 {
-    HttpRequest req("POST / HTTP/1.1\r\n\r\n");
+    HttpRequest req("POST / HTTP/1.1\r\nHost: localhost\r\n\r\n");
 
     EXPECT_EQ(req.get_method(), HttpRequest::http_methods::POST);
     EXPECT_EQ(req.get_uri(),"/");
@@ -29,7 +29,7 @@ TEST(req, basic_post)
 
 TEST(req, basic_uri)
 {
-    HttpRequest req("GET /index.html HTTP/1.1\r\n\r\n");
+    HttpRequest req("GET /index.html HTTP/1.1\r\nHost: localhost\r\n\r\n");
 
     EXPECT_EQ(req.get_method(), HttpRequest::http_methods::GET);
     EXPECT_EQ(req.get_uri(),"/index.html");
@@ -48,18 +48,19 @@ TEST(req, basic_error)
 
 TEST(req, basic_error_clrf)
 {
-    HttpRequest req("GET / HTTP/1.1\r\n");
+    HttpRequest req("GET / HTTP/1.1\r\nHost: localhost\r\n");
     EXPECT_NE(req.get_status(), 0);
 
 }
 
 TEST(req, basic_header_one)
 {
-    HttpRequest req("GET / HTTP/1.1\r\nUser-Agent: Mozilla\r\n\r\n");
+    HttpRequest req("GET / HTTP/1.1\r\nUser-Agent: Mozilla\r\nHost: localhost\r\n\r\n");
 
     HttpResponse::VecHeaders Headers;
     Headers = {
-        {"User-Agent", "Mozilla"}
+        {"User-Agent", "Mozilla"},
+        {"Host", "localhost"}
     };
     EXPECT_EQ(req.get_method(), HttpRequest::http_methods::GET);
     EXPECT_EQ(req.get_uri(),"/");
@@ -71,12 +72,13 @@ TEST(req, basic_header_one)
 
 TEST(req, basic_headers)
 {
-    HttpRequest req("GET / HTTP/1.1\r\nHost: facebook.com\r\nUser-Agent: Mozilla\r\n\r\n");
+    HttpRequest req("GET / HTTP/1.1\r\nHost: facebook.com\r\nUser-Agent: Mozilla\r\nHost: localhost\r\n\r\n");
 
     HttpResponse::VecHeaders Headers;
     Headers = {
         {"Host", "facebook.com"},
-        {"User-Agent", "Mozilla"}
+        {"User-Agent", "Mozilla"},
+        {"Host", "localhost"}
     };
     EXPECT_EQ(req.get_method(), HttpRequest::http_methods::GET);
     EXPECT_EQ(req.get_uri(),"/");

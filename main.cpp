@@ -5,6 +5,7 @@
 #include "HttpServer.h"
 #include "HttpResponse.h"
 #include "Logger.h"
+#include "HttpClient.h"
 #include <map>
 
 

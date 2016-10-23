@@ -1,75 +1,73 @@
 #include "HttpResponse.h"
 #include <string>
 #include <iostream>
+#include "HttpRequest.h"
+#include "HttpServer.h"
+#include <cassert>
 
 
-HttpResponse::HttpResponse(std::string version, int status,
-			HttpResponse::VecHeaders Headers,
-			std::string body):
-	version(version),
-	status(status),
-	Headers(Headers), 
-	body(body),
-	content_length(body.length())
+HttpResponse::HttpResponse(){}
+
+HttpResponse::HttpResponse(int http_status): http_status(http_status)
+{}
+
+HttpResponse::HttpResponse(int http_status, std::string content):
+              HttpResponse(http_status)
 {
-	StatusCodes = std::map<int, std::string>{
-		{200, "OK"},
-		{404, "Not Found"},
-        {405, "Method not allowed"},
-        {400, "Bad Request"}
-	};
-	std::string s_content_length = std::to_string(content_length);
-    this->Headers.insert({"Content-Length", s_content_length});
+    content_length = content.length();
+    Headers.insert({"Content-Length", std::to_string(content_length) });
+
 }
 
-HttpResponse::HttpResponse():
-	HttpResponse(500)
-{}
+HttpResponse::HttpResponse(std::string raw) : HttpMessage(raw)
+{
 
-HttpResponse::HttpResponse(int status):
-	HttpResponse("HTTP/1.1", status)
-{}
+    if(status != 0)
+        return;
 
-HttpResponse::HttpResponse(int status, std::string body):
-	HttpResponse("HTTP/1.1", status, body)
-{}
+    //response line
+    auto response_line = split(first_line," ");
+    if(response_line.size() != 3)
+    {
+        status = 2;
+        return;
+    }
 
-HttpResponse::HttpResponse(std::string version, int status):
-	HttpResponse(version, status, HttpResponse::VecHeaders(), "")
-{}
+    version = response_line.front();
+    http_status = std::stoi(response_line.at(0));
+    std::string result = response_line.back();
 
-HttpResponse::HttpResponse(std::string version, int status,
-			HttpResponse::VecHeaders Headers):
-	HttpResponse(version, status, Headers, "")
-{}
-
-HttpResponse::HttpResponse(std::string version, int status,
-		 std::string body):
-	HttpResponse(version, status,HttpResponse::VecHeaders(), body)
-{} 
+    if(HttpServer::StatusCodes.find(http_status) == HttpServer::StatusCodes.end() ||
+       HttpServer::StatusCodes.find(http_status)->second != result)
+    {
+        status = 3;
+        return;
+    }
+}
 
 void HttpResponse::print() const
 {
-	std::string status_str = StatusCodes.find(status)->second;
+    std::string status_str = HttpServer::StatusCodes.find(status)->second;
 	std::cout<<"Status:\t\t"<<status<<' '<<status_str<<'\n';
 	std::cout<<"Version:\t"<<version<<std::endl;
-	std::cout<<"Body:\t\t"<<body<<std::endl;
+    std::cout<<"Body:\t\t"<<content<<std::endl;
 }
 
 std::string HttpResponse::__to_string() const
 {
     std::string out("");
-	std::string status_str = StatusCodes.find(status)->second;
+    std::string status_str = HttpServer::StatusCodes.find(status)->second;
 	out += version+" "+std::to_string(status)+" "+status_str+"\r\n";
 	for(auto &header: Headers)
 		out += header.first+": "+header.second+"\r\n";
-	if(!body.empty())
-	{
-		out += "\r\n";
-		out += body;
-	}
+    out += "\r\n";
+    out += content;
 	return out;
 }
+
+int HttpResponse::get_http_status() const { return http_status; }
+
+
 
 
 

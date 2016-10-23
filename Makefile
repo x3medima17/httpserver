@@ -217,6 +217,66 @@ src/HttpApplication.cpp.s:
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpApplication.cpp.s
 .PHONY : src/HttpApplication.cpp.s
 
+src/HttpClient.o: src/HttpClient.cpp.o
+
+.PHONY : src/HttpClient.o
+
+# target to build an object file
+src/HttpClient.cpp.o:
+	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.o
+	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpClient.cpp.o
+.PHONY : src/HttpClient.cpp.o
+
+src/HttpClient.i: src/HttpClient.cpp.i
+
+.PHONY : src/HttpClient.i
+
+# target to preprocess a source file
+src/HttpClient.cpp.i:
+	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.i
+	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpClient.cpp.i
+.PHONY : src/HttpClient.cpp.i
+
+src/HttpClient.s: src/HttpClient.cpp.s
+
+.PHONY : src/HttpClient.s
+
+# target to generate assembly for a file
+src/HttpClient.cpp.s:
+	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.s
+	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpClient.cpp.s
+.PHONY : src/HttpClient.cpp.s
+
+src/HttpMessage.o: src/HttpMessage.cpp.o
+
+.PHONY : src/HttpMessage.o
+
+# target to build an object file
+src/HttpMessage.cpp.o:
+	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpMessage.cpp.o
+	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpMessage.cpp.o
+.PHONY : src/HttpMessage.cpp.o
+
+src/HttpMessage.i: src/HttpMessage.cpp.i
+
+.PHONY : src/HttpMessage.i
+
+# target to preprocess a source file
+src/HttpMessage.cpp.i:
+	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpMessage.cpp.i
+	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpMessage.cpp.i
+.PHONY : src/HttpMessage.cpp.i
+
+src/HttpMessage.s: src/HttpMessage.cpp.s
+
+.PHONY : src/HttpMessage.s
+
+# target to generate assembly for a file
+src/HttpMessage.cpp.s:
+	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpMessage.cpp.s
+	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpMessage.cpp.s
+.PHONY : src/HttpMessage.cpp.s
+
 src/HttpRequest.o: src/HttpRequest.cpp.o
 
 .PHONY : src/HttpRequest.o
@@ -397,6 +457,33 @@ src/socket.cpp.s:
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/socket.cpp.s
 .PHONY : src/socket.cpp.s
 
+test/httpclienttest.o: test/httpclienttest.cpp.o
+
+.PHONY : test/httpclienttest.o
+
+# target to build an object file
+test/httpclienttest.cpp.o:
+	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/test/httpclienttest.cpp.o
+.PHONY : test/httpclienttest.cpp.o
+
+test/httpclienttest.i: test/httpclienttest.cpp.i
+
+.PHONY : test/httpclienttest.i
+
+# target to preprocess a source file
+test/httpclienttest.cpp.i:
+	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/test/httpclienttest.cpp.i
+.PHONY : test/httpclienttest.cpp.i
+
+test/httpclienttest.s: test/httpclienttest.cpp.s
+
+.PHONY : test/httpclienttest.s
+
+# target to generate assembly for a file
+test/httpclienttest.cpp.s:
+	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/test/httpclienttest.cpp.s
+.PHONY : test/httpclienttest.cpp.s
+
 test/httprequesttest.o: test/httprequesttest.cpp.o
 
 .PHONY : test/httprequesttest.o
@@ -469,6 +556,12 @@ help:
 	@echo "... src/HttpApplication.o"
 	@echo "... src/HttpApplication.i"
 	@echo "... src/HttpApplication.s"
+	@echo "... src/HttpClient.o"
+	@echo "... src/HttpClient.i"
+	@echo "... src/HttpClient.s"
+	@echo "... src/HttpMessage.o"
+	@echo "... src/HttpMessage.i"
+	@echo "... src/HttpMessage.s"
 	@echo "... src/HttpRequest.o"
 	@echo "... src/HttpRequest.i"
 	@echo "... src/HttpRequest.s"
@@ -487,6 +580,9 @@ help:
 	@echo "... src/socket.o"
 	@echo "... src/socket.i"
 	@echo "... src/socket.s"
+	@echo "... test/httpclienttest.o"
+	@echo "... test/httpclienttest.i"
+	@echo "... test/httpclienttest.s"
 	@echo "... test/httprequesttest.o"
 	@echo "... test/httprequesttest.i"
 	@echo "... test/httprequesttest.s"

@@ -4,33 +4,35 @@
 #include <string>
 #include <vector>
 #include "HttpResponse.h"
+#include "HttpMessage.h"
 
-class HttpRequest {
+class HttpClient;
+
+class HttpRequest : public HttpMessage {
+
+friend class HttpClient;
+
 public:
-	enum http_methods {GET, POST};	
-
-        HttpRequest(http_methods, std::string,std::string);
+        HttpRequest(http_methods, std::string);
         HttpRequest(std::string);
 
-        http_methods get_method() const;
-	std::string get_version() const;
-	std::string get_uri() const;
-        std::string get_content() const;
+        // Misc
         void print() const;
-        int get_status() const;
-        int get_content_length() const;
+        std::string __to_string() const;
 
-        HttpResponse::VecHeaders get_headers() const;
+        //Getters
+        http_methods get_method() const;
+        std::string get_uri() const;
+        std::string get_host() const;
+
+        //Setters
+        void set_host(std::string);
 
 private:
-        int status, content_length;
-	http_methods method;
-        std::string URI, version, data, content;
-	std::vector<std::string> Methods;
-        HttpResponse::VecHeaders Headers;
-
-        HttpRequest();
-        std::vector<std::string> split(std::string, std::string) const;
+        std::vector<std::string> Methods {"GET", "POST"};
+        http_methods method {GET};
+        std::string URI{""};
+        std::string host{""};
 
 };
 

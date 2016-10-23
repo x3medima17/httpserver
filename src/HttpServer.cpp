@@ -2,11 +2,18 @@
 #include "HttpServer.h"
 #include "HttpResponse.h"
 #include "socket.h"
-
+#include "HttpMessage.h"
 #include <string>
 #include <map>
 #include <iostream>
 
+
+HttpServer::HttpCodesMap HttpServer::StatusCodes = {
+    {200, "OK"},
+    {404, "Not Found"},
+    {405, "Method not allowed"},
+    {400, "Bad Request"}
+};
 
 HttpServer::HttpServer(HttpApplication app):
 		app(app), 
@@ -79,14 +86,15 @@ void HttpServer::start()
 	{
 		Socket client = this->sock->accept();
         //std::cout<<"Got client"<<std::endl;
-		auto req = get_http_request(client);
-        auto response = process_request(req);
-		client.send(response.__to_string());
+        auto req = get_http_request<HttpResponse>(client);
+        //auto response = process_request(req);
+        //client.send(response.__to_string());
 		client.close();
 	}
 }
 
-HttpRequest HttpServer::get_http_request(Socket &client)
+template<class T>
+std::shared_ptr<HttpMessage> HttpServer::get_http_request(Socket &client)
 {
 	std::string data("");
 	std::pair<int,std::string> tmp;
@@ -110,7 +118,7 @@ HttpRequest HttpServer::get_http_request(Socket &client)
     if(clen > 0)
        data += client.recv(clen).second;
     std::cout<<data<<std::endl;
-	return HttpRequest(data);
+    return std::shared_ptr<HttpMessage>(new T(data));
 }
 
 HttpServer::~HttpServer()

@@ -4,29 +4,28 @@
 #include <string>
 #include <vector>
 #include <map>
+#include "HttpMessage.h"
 
-class HttpResponse {
+class HttpResponse : public HttpMessage {
 public:
         typedef std::map<std::string, std::string> VecHeaders;
+
 
         HttpResponse();
         HttpResponse(int);
         HttpResponse(int, std::string);
-        HttpResponse(std::string, int);
-        HttpResponse(std::string, int, VecHeaders);
-        HttpResponse(std::string, int, std::string);
-        HttpResponse(std::string, int, VecHeaders, std::string );
+        //for accepting responses
+        HttpResponse(std::string);
 
         void print() const;
         std::string __to_string() const;
 
+        //Getters
+        int get_http_status() const;
+
+
 private:
-	std::string version;
-	int status;
-	VecHeaders Headers;
-	std::string body;	
-	int content_length;
-	std::map<int, std::string> StatusCodes;
+        int http_status{0};
 };
 
 #endif
