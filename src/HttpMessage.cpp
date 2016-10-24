@@ -28,7 +28,6 @@ HttpMessage::HttpMessage(std::string raw)
 
     //request line
     this->first_line = header.front();
-    auto first_line = split(header.front()," ");
 
     //Headers
     for(size_t i=1; i<header.size();i++)

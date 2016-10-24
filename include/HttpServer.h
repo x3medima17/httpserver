@@ -4,16 +4,22 @@
 #include <string>
 #include <map>
 #include <memory>
+#include <iostream>
 
 #include "socket.h"
 #include "HttpApplication.h"
 #include "HttpRequest.h"
 #include "HttpMessage.h"
+
 class HttpClient;
 
 class HttpServer {
+
 friend class HttpClient;
 typedef std::map<int, std::string> HttpCodesMap;
+
+
+
 
 private:
 	HttpApplication app;
@@ -30,10 +36,11 @@ public:
 	void listen(int);
 	void start();	
 
-        template<typename T>
-        static  std::shared_ptr<HttpMessage>  get_http_request(Socket&);
 
         static  std::map<int, std::string> StatusCodes;
+
+
+
 };
 
 #endif

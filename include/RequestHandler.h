@@ -12,11 +12,11 @@ public:
 	RequestHandler();
 	
 	void initialize();	
-	std::string get_response_body() const;
+        std::string get_content() const;
 protected:
 	void write(std::string);
 	void render(std::string);
-	std::string response_body;
+        std::string content;
         std::map<std::string, std::string> request;
 
 };

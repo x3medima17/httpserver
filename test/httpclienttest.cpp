@@ -59,6 +59,24 @@ TEST(cli, basic_wrong_structure)
 }
 
 
+TEST(cli, port_80)
+{
+    HttpClient cli("http://google.com/");
+
+    EXPECT_EQ(cli.get_status(), 0);
+    EXPECT_EQ(cli.get_port(), 80);
+}
+
+TEST(cli, port_8080)
+{
+    HttpClient cli("http://google.com:8080/");
+
+    EXPECT_EQ(cli.get_status(), 0);
+    EXPECT_EQ(cli.get_port(), 8080);
+    EXPECT_EQ(cli.get_host(),"google.com");
+    EXPECT_EQ(cli.get_uri(), "/");
+}
+
 TEST(cli, fetch_200)
 {
     HttpClient cli("http://httpbin.org/status/200");
@@ -93,26 +111,25 @@ TEST(cli, fetch_500)
 
 }
 
-TEST(cli, fetch_ip)
+TEST(cli, fetch_robots)
 {
-    HttpClient cli("http://httpbin.org/status/500");
-    std::string str = "{\n  \"origin\": \"192.249.28.106\"\n}";
+    HttpClient cli("http://httpbin.org/robots.txt");
+    std::string str = "User-agent: *\nDisallow: /deny\n";
     cli.fetch();
     auto resp = cli.response;
     EXPECT_EQ(resp.get_status(), 0);
     EXPECT_EQ(resp.get_http_status(), 200);
     EXPECT_EQ(resp.get_content(), str);
-    EXPECT_EQ(resp.get_content_length(), 33);
+    EXPECT_EQ(resp.get_content_length(), 30);
 
 }
 
-TEST(cli, headers)
+TEST(cli, fetch_headers)
 {
     HttpClient cli("http://httpbin.org/status/200");
 
     HttpResponse::VecHeaders V = {
         { "Server",  "nginx" },
-        { "Date", "Sun, 23 Oct 2016 06:54:32 GMT"},
         { "Content-Type", "text/html; charset=utf-8"},
         { "Content-Length", "0" },
         { "Connection", "keep-alive" },
@@ -121,9 +138,11 @@ TEST(cli, headers)
     };
     cli.fetch();
     auto resp = cli.response;
+    auto expV = resp.get_headers();
+    expV.erase("Date");
     EXPECT_EQ(resp.get_status(), 0);
     EXPECT_EQ(resp.get_http_status(), 200);
-    EXPECT_EQ(resp.get_headers(), V);
+    EXPECT_EQ(expV, V);
 
 
 }

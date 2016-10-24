@@ -13,26 +13,6 @@
 #include <cassert>
 #include <sstream>
 
-/*
-HttpRequest::HttpRequest(http_methods method, std::string URI, 
-            std::string version = "HTTP/1.1"):
-    status(0),
-    content_length(0),
-	method(method), 
-	URI(URI), 
-    version(version),
-    Methods{"GET", "POST"}
-{}
-
-
-HttpRequest::HttpRequest():
-    status(0),
-    content_length(0),
-    content(""),
-    Methods{"GET","POST"}
-{}
-*/
-
 HttpRequest::HttpRequest(http_methods method, std::string uri):
             method(method),
             URI(uri)

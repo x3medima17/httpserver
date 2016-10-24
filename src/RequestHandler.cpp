@@ -7,11 +7,11 @@ void RequestHandler::get()
 
 }
 
-RequestHandler::RequestHandler():response_body(""){}
+RequestHandler::RequestHandler():content(""){}
 
 void RequestHandler::write(std::string str)
 {
-	response_body += str;
+    content += str;
 }
 
 void RequestHandler::render(std::string fname)
@@ -20,16 +20,16 @@ void RequestHandler::render(std::string fname)
 	std::ifstream t(file_name);
 	std::string str((std::istreambuf_iterator<char>(t)),
                  std::istreambuf_iterator<char>());
-	response_body = str;
+    content = str;
 }
 
 void RequestHandler::initialize()
 {
-	response_body = std::string("");
+    content = std::string("");
 }
 
-std::string RequestHandler::get_response_body() const 
+std::string RequestHandler::get_content() const
 {
 
-	return response_body;
+    return content;
 }

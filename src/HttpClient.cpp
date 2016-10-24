@@ -3,7 +3,7 @@
 #include <string>
 #include <iostream>
 #include "HttpServer.h"
-
+#include "utils.h"
 
 HttpClient::HttpClient(std::string host = "", std::string URI = "", int port = 80,
                        int status = 0, HttpRequest::http_methods method = HttpRequest::GET):
@@ -52,8 +52,7 @@ void HttpClient::fetch()
     req.set_host(host);
     sock.connect();
     sock.send(req.__to_string());
-    std::cout<<"_________________\n"<<req.__to_string()<<"_______________\n";
-    auto tmp = HttpServer::get_http_request<HttpResponse>(sock);
+    auto tmp = Utils::get_http_request<HttpResponse>(sock);
     std::shared_ptr<HttpResponse> pt = std::dynamic_pointer_cast<HttpResponse>(tmp);
     response = *pt;
     sock.close();
@@ -64,6 +63,4 @@ int HttpClient::get_port() const { return port; }
 std::string HttpClient::get_uri() const { return URI; }
 std::string HttpClient::get_host() const { return host; }
 HttpRequest::http_methods HttpClient::get_method() const { return method; }
-
-//HttpResponse::VecHeaders HttpClient::get_headers() const { return Headers; }
 

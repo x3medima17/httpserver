@@ -14,6 +14,7 @@ HttpResponse::HttpResponse(int http_status): http_status(http_status)
 HttpResponse::HttpResponse(int http_status, std::string content):
               HttpResponse(http_status)
 {
+    this->content = content;
     content_length = content.length();
     Headers.insert({"Content-Length", std::to_string(content_length) });
 
@@ -27,18 +28,19 @@ HttpResponse::HttpResponse(std::string raw) : HttpMessage(raw)
 
     //response line
     auto response_line = split(first_line," ");
-    if(response_line.size() != 3)
+    if(response_line.size() < 3)
     {
         status = 2;
         return;
     }
 
     version = response_line.front();
-    http_status = std::stoi(response_line.at(0));
-    std::string result = response_line.back();
+    http_status = std::stoi(response_line.at(1));
+    std::string result("");
+    for(size_t i = 2; i<response_line.size(); i++)
+        result += response_line.at(i);
 
-    if(HttpServer::StatusCodes.find(http_status) == HttpServer::StatusCodes.end() ||
-       HttpServer::StatusCodes.find(http_status)->second != result)
+    if(HttpServer::StatusCodes.find(http_status) == HttpServer::StatusCodes.end())
     {
         status = 3;
         return;
@@ -56,8 +58,8 @@ void HttpResponse::print() const
 std::string HttpResponse::__to_string() const
 {
     std::string out("");
-    std::string status_str = HttpServer::StatusCodes.find(status)->second;
-	out += version+" "+std::to_string(status)+" "+status_str+"\r\n";
+    std::string status_str = HttpServer::StatusCodes.find(http_status)->second;
+    out += version+" "+std::to_string(http_status)+" "+status_str+"\r\n";
 	for(auto &header: Headers)
 		out += header.first+": "+header.second+"\r\n";
     out += "\r\n";
