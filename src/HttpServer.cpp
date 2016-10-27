@@ -43,35 +43,43 @@ void HttpServer::listen(int n)
 }
 
 
-void HttpServer::setup_handler(std::shared_ptr<RequestHandler> handler)
+void HttpServer::setup_handler(std::shared_ptr<RequestHandler> handler, HttpRequest& req)
 {
     handler->initialize();
-    handler->request = {
-        {"remote_ip" , sock->get_remote_ip()},
-        {"remote_port",  std::to_string(sock->get_remote_port())}
-    };
+
+
+    req.remote_ip = sock->get_remote_ip();
+    req.remote_port = sock->get_remote_port();
+
+    handler->request = req;
+
+
 
 }
 
-HttpResponse HttpServer::process_request(const HttpRequest &req)
+HttpResponse HttpServer::process_request(HttpRequest& req)
 {
     if(req.get_status() != 0)
         return HttpResponse(400);
 
+    auto host_it  = req.get_headers().find("Host");
+    if(host_it == req.get_headers().end())
+        return HttpResponse(400, "No host specified");
+
     auto handler_it = app.handlers.find(req.get_uri());
 
     if(handler_it == app.handlers.end())
-        return  HttpResponse(404);
+        return  HttpResponse(404, "Not found");
 
     auto handler = handler_it->second;
 
     //Setup handler
-    setup_handler(handler);
+    setup_handler(handler, req);
 
     int e405 = 0;
     switch(req.get_method())
     {
-        case HttpRequest::GET:
+        case Utils::GET:
             handler->get();
             break;
         default:
@@ -79,12 +87,12 @@ HttpResponse HttpServer::process_request(const HttpRequest &req)
             break;
     }
     auto content = handler->get_content();
-    HttpResponse response;
+
     if(e405 == 1)
-        response = HttpResponse (405);
+        return HttpResponse (405);
     else
-        response = HttpResponse (200, content);
-    return response;
+        return HttpResponse (200, content);
+
 }
 
 void HttpServer::start()
@@ -93,14 +101,26 @@ void HttpServer::start()
 	{
         Logger log;
         Socket client = sock->accept();
-        log<<"Established connection with "<<sock->get_remote_ip()<<" on port"<<sock->get_remote_port()<<"\n";
 
-        auto req = Utils::get_http_request<HttpRequest>(client);
-        std::shared_ptr<HttpRequest> pt = std::dynamic_pointer_cast<HttpRequest>(req);
-        log<<Utils::HttpHeaders.at(pt->get_method())<<" "<<pt->get_uri()<<"\n";
-        auto response = process_request(*pt);
-        client.send(response.__to_string());
-		client.close();
+        int pid = fork();
+        if(pid == 0)
+        {
+
+            log<<"Established connection with "<<sock->get_remote_ip()<<" on port "<<sock->get_remote_port()<<"\n";
+            sock->close();
+            auto req = Utils::get_http_message<HttpRequest>(client);
+            std::shared_ptr<HttpRequest> pt = std::dynamic_pointer_cast<HttpRequest>(req);
+            log<<Utils::HttpMethods.at(pt->get_method())<<" "<<pt->get_uri()<<"\n";
+
+            auto response = process_request(*pt);
+
+            client.send(response.__to_string());
+            client.close();
+            log<<"Connection closed\n";
+            break;
+        }
+        else
+            client.close();
 	}
 }
 

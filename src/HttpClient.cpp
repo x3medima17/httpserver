@@ -6,7 +6,7 @@
 #include "utils.h"
 
 HttpClient::HttpClient(std::string host = "", std::string URI = "", int port = 80,
-                       int status = 0, HttpRequest::http_methods method = HttpRequest::GET):
+                       int status = 0, Utils::http_methods method = Utils::GET):
             host(host),
             URI(URI),
             port(port),
@@ -52,7 +52,7 @@ void HttpClient::fetch()
     req.set_host(host);
     sock.connect();
     sock.send(req.__to_string());
-    auto tmp = Utils::get_http_request<HttpResponse>(sock);
+    auto tmp = Utils::get_http_message<HttpResponse>(sock);
     std::shared_ptr<HttpResponse> pt = std::dynamic_pointer_cast<HttpResponse>(tmp);
     response = *pt;
     sock.close();
@@ -61,6 +61,6 @@ void HttpClient::fetch()
 int HttpClient::get_status() const { return status; }
 int HttpClient::get_port() const { return port; }
 std::string HttpClient::get_uri() const { return URI; }
-std::string HttpClient::get_host() const { return host; }
-HttpRequest::http_methods HttpClient::get_method() const { return method; }
+std::string HttpClient::get_host() const { return (port == 80 ) ? host : host+":"+std::to_string(port) ; }
+Utils::http_methods HttpClient::get_method() const { return method; }
 

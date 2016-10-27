@@ -1,27 +1,30 @@
-#ifndef HTTPREQUEST_H_
-#define HTTPREQUEST_H_ 
+#pragma once
 
 #include <string>
 #include <vector>
+
+
 #include "HttpResponse.h"
 #include "HttpMessage.h"
+#include "utils.h"
 
-class HttpClient;
 
 class HttpRequest : public HttpMessage {
 
 friend class HttpClient;
+friend class HttpServer;
 
 public:
-        HttpRequest(http_methods, std::string);
-        HttpRequest(std::string);
+        HttpRequest(Utils::http_methods, std::string);
+        HttpRequest(const std::string&, const std::string& = "", int ip = 80);
+        HttpRequest();
 
         // Misc
         void print() const;
         std::string __to_string() const;
 
         //Getters
-        http_methods get_method() const;
+        Utils::http_methods get_method() const;
         std::string get_uri() const;
         std::string get_host() const;
 
@@ -29,11 +32,10 @@ public:
         void set_host(std::string);
 
 private:
-        std::vector<std::string> Methods {"GET", "POST"};
-        http_methods method {GET};
+        Utils::http_methods method {Utils::GET};
         std::string URI{""};
         std::string host{""};
 
 };
 
-#endif
+

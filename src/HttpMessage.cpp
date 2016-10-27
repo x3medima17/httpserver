@@ -8,7 +8,9 @@ HttpMessage::~HttpMessage(){}
 
 HttpMessage::HttpMessage(){}
 
-HttpMessage::HttpMessage(std::string raw)
+HttpMessage::HttpMessage(const std::string& raw, const std::string& ip, int port):
+             remote_ip(ip),
+             remote_port(port)
 {
 
     auto tmp = split(raw,"\r\n\r\n");
@@ -44,13 +46,13 @@ HttpMessage::HttpMessage(std::string raw)
     if(Headers.find("Content-Length") != Headers.end())
         assert(Headers["Content-Length"] == std::to_string(content.length()));
     content_length = content.length();
-    this->content = content;
 
+    this->content = content;
 }
 
 
 
-std::vector<std::string> HttpMessage::split(std::string target, std::string splitter)
+std::vector<std::string> HttpMessage::split(const std::string& target, const std::string& splitter)
 {
     std::vector<std::string> V;
     auto i = 0;
@@ -77,7 +79,8 @@ std::string HttpMessage::get_version() const { return version; }
 std::string HttpMessage::get_content() const { return content; }
 int HttpMessage::get_status() const { return status; }
 int HttpMessage::get_content_length() const { return content_length; }
-
+std::string HttpMessage::get_remote_ip() const { return remote_ip; }
+int HttpMessage::get_remote_port() const { return remote_port; }
 
 
 

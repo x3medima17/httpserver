@@ -3,15 +3,17 @@
 #include "HttpResponse.h"
 
 #include <string>
+
 TEST(req, basic_get)
 {
     HttpRequest req("GET / HTTP/1.1\r\nHost: localhost\r\n\r\n");
 
-    EXPECT_EQ(req.get_method(), HttpRequest::http_methods::GET);
+    EXPECT_EQ(req.get_method(), Utils::http_methods::GET);
     EXPECT_EQ(req.get_uri(),"/");
     EXPECT_EQ(req.get_version(),"HTTP/1.1");
     EXPECT_EQ(req.get_status(), 0);
-
+    EXPECT_EQ(req.get_remote_ip(), "");
+    EXPECT_EQ(req.get_remote_port(), 80);
 }
 
 
@@ -19,10 +21,13 @@ TEST(req, basic_post)
 {
     HttpRequest req("POST / HTTP/1.1\r\nHost: localhost\r\n\r\n");
 
-    EXPECT_EQ(req.get_method(), HttpRequest::http_methods::POST);
+    EXPECT_EQ(req.get_method(), Utils::http_methods::POST);
     EXPECT_EQ(req.get_uri(),"/");
     EXPECT_EQ(req.get_version(),"HTTP/1.1");
     EXPECT_EQ(req.get_status(), 0);
+
+    EXPECT_EQ(req.get_remote_ip(), "");
+    EXPECT_EQ(req.get_remote_port(), 80);
 
 }
 
@@ -31,10 +36,13 @@ TEST(req, basic_uri)
 {
     HttpRequest req("GET /index.html HTTP/1.1\r\nHost: localhost\r\n\r\n");
 
-    EXPECT_EQ(req.get_method(), HttpRequest::http_methods::GET);
+    EXPECT_EQ(req.get_method(), Utils::http_methods::GET);
     EXPECT_EQ(req.get_uri(),"/index.html");
     EXPECT_EQ(req.get_version(),"HTTP/1.1");
     EXPECT_EQ(req.get_status(), 0);
+
+    EXPECT_EQ(req.get_remote_ip(), "");
+    EXPECT_EQ(req.get_remote_port(), 80);
 
 }
 
@@ -62,7 +70,7 @@ TEST(req, basic_header_one)
         {"User-Agent", "Mozilla"},
         {"Host", "localhost"}
     };
-    EXPECT_EQ(req.get_method(), HttpRequest::http_methods::GET);
+    EXPECT_EQ(req.get_method(), Utils::http_methods::GET);
     EXPECT_EQ(req.get_uri(),"/");
     EXPECT_EQ(req.get_version(),"HTTP/1.1");
     EXPECT_EQ(req.get_headers(), Headers);
@@ -80,7 +88,7 @@ TEST(req, basic_headers)
         {"User-Agent", "Mozilla"},
         {"Host", "localhost"}
     };
-    EXPECT_EQ(req.get_method(), HttpRequest::http_methods::GET);
+    EXPECT_EQ(req.get_method(), Utils::http_methods::GET);
     EXPECT_EQ(req.get_uri(),"/");
     EXPECT_EQ(req.get_version(),"HTTP/1.1");
     EXPECT_EQ(req.get_headers(), Headers);
@@ -103,7 +111,7 @@ TEST(req, basic_content)
         {"User-Agent", "Mozilla"},
         {"Content-Length", "11" }
     };
-    EXPECT_EQ(req.get_method(), HttpRequest::http_methods::GET);
+    EXPECT_EQ(req.get_method(), Utils::http_methods::GET);
     EXPECT_EQ(req.get_uri(),"/");
     EXPECT_EQ(req.get_version(),"HTTP/1.1");
     EXPECT_EQ(req.get_headers(), Headers);
@@ -111,4 +119,18 @@ TEST(req, basic_content)
     EXPECT_EQ(req.get_content_length(), 11);
     EXPECT_EQ(req.get_content(), "Hello World");
 
+}
+
+
+TEST(req, remote_ip_port)
+{
+    HttpRequest req("GET / HTTP/1.1\r\nHost: localhost\r\n\r\n", "192.168.0.1", 8085);
+
+    EXPECT_EQ(req.get_method(), Utils::http_methods::GET);
+    EXPECT_EQ(req.get_uri(),"/");
+    EXPECT_EQ(req.get_version(),"HTTP/1.1");
+    EXPECT_EQ(req.get_status(), 0);
+
+    EXPECT_EQ(req.get_remote_ip(), "192.168.0.1");
+    EXPECT_EQ(req.get_remote_port(), 8085);
 }

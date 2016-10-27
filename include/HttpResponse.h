@@ -14,8 +14,9 @@ public:
         HttpResponse();
         HttpResponse(int);
         HttpResponse(int, std::string);
+
         //for accepting responses
-        HttpResponse(std::string);
+        HttpResponse(const std::string&, const std::string&, int port);
 
         void print() const;
         std::string __to_string() const;

@@ -25,8 +25,8 @@ private:
 	HttpApplication app;
 	std::unique_ptr<Socket> sock;
 	
-        HttpResponse process_request(const HttpRequest&);
-        void setup_handler(std::shared_ptr<RequestHandler>);
+        HttpResponse process_request(HttpRequest&);
+        void setup_handler(std::shared_ptr<RequestHandler>, HttpRequest&);
 
 public:
 	HttpServer(HttpApplication app);

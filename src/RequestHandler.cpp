@@ -1,13 +1,21 @@
 #include "RequestHandler.h"
 #include <iostream>
 #include <fstream>
-//RequestHandler::RequestHandler();
+
+#include "HttpRequest.h"
+
 void RequestHandler::get()
 {
 
 }
 
-RequestHandler::RequestHandler():content(""){}
+RequestHandler::RequestHandler(){}
+
+/*
+RequestHandler::RequestHandler(const HttpRequest* req) :
+        request(req)
+{}
+*/
 
 void RequestHandler::write(std::string str)
 {

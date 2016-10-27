@@ -20,7 +20,8 @@ HttpResponse::HttpResponse(int http_status, std::string content):
 
 }
 
-HttpResponse::HttpResponse(std::string raw) : HttpMessage(raw)
+HttpResponse::HttpResponse(const std::string& raw, const std::string& ip, int port) :
+              HttpMessage(raw, ip, port)
 {
 
     if(status != 0)

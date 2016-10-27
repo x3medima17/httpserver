@@ -13,12 +13,15 @@
 #include <cassert>
 #include <sstream>
 
-HttpRequest::HttpRequest(http_methods method, std::string uri):
+HttpRequest::HttpRequest(Utils::http_methods method, std::string uri):
             method(method),
             URI(uri)
 {}
 
-HttpRequest::HttpRequest(std::string raw): HttpMessage(raw)
+//TODO: remove this constructor !!!
+HttpRequest::HttpRequest(){}
+
+HttpRequest::HttpRequest(const std::string& raw, const std::string& ip, int port): HttpMessage(raw, ip, port)
 {
     if(status != 0)
         return;
@@ -34,9 +37,9 @@ HttpRequest::HttpRequest(std::string raw): HttpMessage(raw)
     std::string str_method = request_line.front();
 
     if(str_method == "GET")
-            method = GET;
+            method = Utils::http_methods::GET;
     else if(str_method == "POST")
-            method = POST;
+            method = Utils::http_methods::POST;
     else
     {
         status = 3;
@@ -61,7 +64,7 @@ void HttpRequest::set_host(std::string host)
 void HttpRequest::print() const
 {
 	std::cout<<"Status:\t\t"<<status<<'\n';
-	std::cout<<"Method:\t\t"<<Methods.at(method)<<'\n';
+    std::cout<<"Method:\t\t"<<Utils::HttpMethods.at(method)<<'\n';
 	std::cout<<"URI:\t\t"<<URI<<'\n';
 	std::cout<<"Version:\t"<<version<<std::endl;
 }
@@ -70,7 +73,7 @@ void HttpRequest::print() const
 std::string HttpRequest::__to_string() const
 {
     std::stringstream out;
-    out<<Methods.at(method)<<' '<<URI<<' '<<version<<"\r\n";
+    out<<Utils::HttpMethods.at(method)<<' '<<URI<<' '<<version<<"\r\n";
     for(auto &header : Headers)
         out<<header.first<<": "<<header.second<<"\r\n";
     out<<"\r\n";
@@ -80,5 +83,5 @@ std::string HttpRequest::__to_string() const
 
 }
 
-HttpMessage::http_methods HttpRequest::get_method() const { return method; }
+Utils::http_methods HttpRequest::get_method() const { return method; }
 std::string HttpRequest::get_uri() const { return URI; }

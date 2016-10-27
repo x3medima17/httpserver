@@ -1,9 +1,14 @@
 #pragma once
 
+#include <memory>
+#include <vector>
+
+#include "HttpMessage.h"
+
 namespace Utils {
 
     template<class T>
-    std::shared_ptr<HttpMessage> get_http_request(Socket &client)
+    std::shared_ptr<HttpMessage> get_http_message(Socket &client)
     {
             std::string data("");
             std::pair<int,std::string> tmp;
@@ -26,9 +31,12 @@ namespace Utils {
         }
         if(clen > 0)
            data += client.recv(clen).second;
-        return std::shared_ptr<HttpMessage>(new T(data));
+
+        return std::shared_ptr<HttpMessage>(new T(data, client.get_remote_ip(), client.get_remote_port()));
     }
 
-    const std::vector<std::string> HttpHeaders= {"GET", "POST"};
+    const std::vector<std::string> HttpMethods = {"GET", "POST"};
+
+    enum http_methods {GET, POST};
 }
 

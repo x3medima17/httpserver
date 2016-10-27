@@ -9,7 +9,7 @@ TEST(cli, basic)
 {
     HttpClient cli("http://facebook.com/");
 
-    EXPECT_EQ(cli.get_method(), HttpRequest::http_methods::GET);
+    EXPECT_EQ(cli.get_method(), Utils::http_methods::GET);
     EXPECT_EQ(cli.get_uri(),"/");
     EXPECT_EQ(cli.get_host(),"facebook.com");
     EXPECT_EQ(cli.get_port(), 80);
@@ -22,9 +22,9 @@ TEST(cli, basic_port)
 {
     HttpClient cli("http://facebook.com:8080/");
 
-    EXPECT_EQ(cli.get_method(), HttpRequest::http_methods::GET);
+    EXPECT_EQ(cli.get_method(), Utils::http_methods::GET);
     EXPECT_EQ(cli.get_uri(),"/");
-    EXPECT_EQ(cli.get_host(),"facebook.com");
+    EXPECT_EQ(cli.get_host(),"facebook.com:8080");
     EXPECT_EQ(cli.get_port(), 8080);
     EXPECT_EQ(cli.get_status(), 0);
 }
@@ -34,7 +34,7 @@ TEST(cli, basic_uri)
 {
     HttpClient cli("http://facebook.com/index.html");
 
-    EXPECT_EQ(cli.get_method(), HttpRequest::http_methods::GET);
+    EXPECT_EQ(cli.get_method(), Utils::http_methods::GET);
     EXPECT_EQ(cli.get_uri(),"/index.html");
     EXPECT_EQ(cli.get_host(),"facebook.com");
     EXPECT_EQ(cli.get_port(), 80);
@@ -73,7 +73,7 @@ TEST(cli, port_8080)
 
     EXPECT_EQ(cli.get_status(), 0);
     EXPECT_EQ(cli.get_port(), 8080);
-    EXPECT_EQ(cli.get_host(),"google.com");
+    EXPECT_EQ(cli.get_host(),"google.com:8080");
     EXPECT_EQ(cli.get_uri(), "/");
 }
 
