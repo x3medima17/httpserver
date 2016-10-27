@@ -1,0 +1,564 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<HTML>
+<HEAD>
+  <META name="generator" content=
+  "HTML Tidy for Linux/x86 (vers 1st November 2003), see www.w3.org">
+
+  <TITLE>Using Raw HTML to Write or Edit an HTML Document to
+  Supplement an Editor or without an Editor</TITLE>
+  <LINK href="/lincon/css/linc_container2.css" rel="stylesheet"
+  type="text/css">
+</HEAD>
+
+<body>
+  <DIV id="container">
+    <P>
+
+
+
+
+<CENTER><A HREF="/lincon/"><IMG SRC="/lincon/graphics/lincon_short_vcent.GIF" WIDTH=348 HEIGHT=64 BORDER=0 ALIGN=bottom naturalsizeflag=0></A>
+<BR>
+<IMG SRC="/lincon/graphics/linc_hr.gif" WIDTH=478 HEIGHT=5 ALIGN=bottom naturalsizeflag=3>
+
+
+
+</CENTER>
+
+<BLOCKQUOTE>
+</P>
+
+    <CENTER>
+      <H1>Using Raw HTML to Write and Edit<BR>
+      Your Web Pages to Supplement an<BR>
+      Editor or without Using an Editor</H1>
+    </CENTER>
+
+    <H2>Prerequisite:</H2>
+
+    <BLOCKQUOTE>
+      <DL>
+        <DT>Know basic computer concepts</DT>
+      </DL>
+    </BLOCKQUOTE>
+
+    <H2>Purpose:</H2>
+
+    <BLOCKQUOTE>
+      <P>To obtain what is necessary to start writing Web pages</P>
+
+      <P>To write HTML documents containing text content and proper
+      HTML formatting tags (headers, lists, paragraph, horizontal
+      rule, character formatting, addresses . . . )</P>
+
+      <P>&nbsp;</P>
+    </BLOCKQUOTE>
+
+    <CENTER>
+      <HR>
+    </CENTER>
+
+    <P>Adobe PageMill is the recommended software for our Web
+    pages. Sometimes your Web page may not look the way you want it
+    to. If you can not correct the problem in PageMill the
+    <B>Document Source</B> may help. The source is shown in HTML
+    (HyperText Markup Language).</P>
+
+    <P>The following HTML tags are meant to supplement Adobe
+    PageMill and not replace it. It is not a complete list and is
+    not meant to be one. The purpose of including a list is to help
+    the participants edit their Web pages. Therefore, a partial
+    list of authoring tags are included to assist you.</P>
+    <HR align="left">
+
+    <H2><A name="html"></A><IMG src="graphics/html.gif"
+    x-claris-useimagewidth="" x-claris-useimageheight="" align=
+    "bottom">RAW HTML TABLE OF CONTENTS</H2>
+
+    <UL>
+      <LI><A href="#structure"><FONT size="+1">Page
+      Structure</FONT></A></LI>
+
+      <LI>
+        <FONT size="+1">Links</FONT>
+
+        <UL>
+          <LI><A href="#linkdocs"><FONT size="+1">To other
+          documents</FONT></A></LI>
+
+          <LI><A href="#linkinter"><FONT size="+1">To the
+          Internet</FONT></A></LI>
+        </UL>
+      </LI>
+
+      <LI><A href="#anchors"><FONT size=
+      "+1">Anchors</FONT></A></LI>
+
+      <LI>
+        <A href="#graphics"><FONT size="+1">Graphics</FONT></A>
+
+        <UL>
+          <LI><A href="#inline"><FONT size="+1">Inline
+          image</FONT></A></LI>
+        </UL>
+      </LI>
+
+      <LI><A href="#resources"><FONT size="+1">Internet HTML
+      Resources</FONT></A></LI>
+    </UL>
+
+    <H2>&nbsp;</H2>
+    <HR align="left">
+
+    <BLOCKQUOTE>
+      <P>&nbsp;</P>
+    </BLOCKQUOTE>
+
+    <P><A name="structure"></A><B><FONT size="+1">General Page
+    Structure</FONT></B></P>
+
+    <P>&nbsp;</P>
+
+    <BLOCKQUOTE>
+      <P>To start a new page:</P>
+
+      <BLOCKQUOTE>
+        <P>&lt;HTML&gt;</P>
+
+        <P>&lt;HEAD&gt;</P>
+
+        <P>&lt;TITLE&gt; <I>name of page</I> &lt;/TITLE&gt;</P>
+
+        <P>&lt;/HEAD&gt;</P>
+
+        <P>&lt;BODY&gt;&lt;/BODY&gt;</P>
+
+        <P>&lt;/HTML&gt;</P>
+
+        <P>To see a picture of the structure of an HTML
+        document:</P>
+
+        <BLOCKQUOTE>
+          <P><IMG src="graphics/write_format_structure.gif" align=
+          "bottom"></P>
+
+          <P>An HTML document starts with &lt;HTML&gt; and ends
+          with &lt;/HTML&gt;. In other words, it's just one large
+          &lt;HTML&gt; &lt;/HTML&gt; tag which encloses the whole
+          file.</P>
+
+          <P>Inside this, there are two sections:</P>
+        </BLOCKQUOTE>
+
+        <DIV style="margin-left: 2em">
+          <DL>
+            <DT><B>Heading (HEAD)</B></DT>
+
+            <DD>Contains information about the file (like the
+            title).</DD>
+
+            <DT><B>Body (BODY)</B></DT>
+
+            <DD>Contains the content of the file.</DD>
+          </DL>
+        </DIV>
+
+        <BLOCKQUOTE>
+          <P>Your HTML tags and page content should appear in the
+          BODY section of your document; that is, only in the
+          <B>green</B> section between the &lt;BODY&gt; and
+          &lt;/BODY&gt; tags.</P>
+
+          <P>You can put title and other non-content information
+          inside the <B>(yellow)</B> HEAD section of the
+          document.</P>
+
+          <P>You should <B>not write anything</B> outside those
+          sections; that is, you should not write anything in the
+          <B>red</B> areas of the document.</P>
+
+          <BLOCKQUOTE>
+            <P>&nbsp;</P>
+          </BLOCKQUOTE>
+        </BLOCKQUOTE>
+
+        <P><B>Within the body of the document</B>, you can look
+        at:</P>
+
+        <BLOCKQUOTE>
+          <P>change the heading size:</P>
+
+          <BLOCKQUOTE>
+            <BLOCKQUOTE>
+              <P>&lt;H1&gt;&lt;/H1&gt; largest</P>
+
+              <P>&lt;H6&gt;&lt;/H6&gt; smallest</P>
+            </BLOCKQUOTE>
+          </BLOCKQUOTE>
+
+          <P>change the placement:</P>
+
+          <BLOCKQUOTE>
+            <BLOCKQUOTE>
+              <P>&lt;P ALIGN=CENTER&gt;&lt;/P&gt;</P>
+
+              <P>&lt;P ALIGN=RIGHT&gt;&lt;/P&gt;</P>
+            </BLOCKQUOTE>
+          </BLOCKQUOTE>
+
+          <P>paragraph:</P>
+
+          <P>&lt;P&gt;&lt;/P&gt;</P>
+
+          <P>create a list:</P>
+
+          <BLOCKQUOTE>
+            <P>&lt;UL&gt; bullet list</P>
+
+            <BLOCKQUOTE>
+              <P>&lt;L1&gt; first item in a bullet list</P>
+
+              <P>&lt;L2&gt; second item</P>
+            </BLOCKQUOTE>
+
+            <P>&lt;/UL&gt;</P>
+
+            <P>&lt;OL&gt; numbered list</P>
+
+            <BLOCKQUOTE>
+              <P>&lt;L1&gt; first item</P>
+
+              <P>&lt;L2&gt; second item</P>
+            </BLOCKQUOTE>
+
+            <P>&lt;/OL&gt;</P>
+          </BLOCKQUOTE>
+
+          <P>keep text together:</P>
+
+          <BLOCKQUOTE>
+            <P>&lt;BLOCKQUOTE&gt;&lt;/BLOCKQUOTE&gt;</P>
+          </BLOCKQUOTE>
+
+          <P>change color of the font:</P>
+
+          <BLOCKQUOTE>
+            <P>&lt;FONT COLOR="D91016"&gt;&lt;/FONT&gt; will give a
+            reddish text.</P>
+
+            <P>&lt;FONT COLOR="7E7E7E"&gt;&lt;/FONT&gt; will give a
+            grayish text.</P>
+          </BLOCKQUOTE>
+
+          <P>change the background color:</P>
+
+          <BLOCKQUOTE>
+            <P>&lt;BODY BGCOLOR=#FFFFFF"&gt;&lt;/BODY&gt; will give
+            a white background.</P>
+          </BLOCKQUOTE>
+
+          <P>skip a line:</P>
+
+          <BLOCKQUOTE>
+            <P>&lt;BR&gt; break</P>
+          </BLOCKQUOTE>
+
+          <P>insert a line break:</P>
+
+          <BLOCKQUOTE>
+            <P>&lt;P&gt; &lt;HR ALIGN=LEFT&gt;&lt;/P&gt; sample</P>
+
+            <P align="right"><A href="#html">Back to the
+            top</A></P>
+          </BLOCKQUOTE>
+        </BLOCKQUOTE>
+      </BLOCKQUOTE>
+    </BLOCKQUOTE>
+    <HR align="left">
+
+    <P>&nbsp;</P>
+
+    <H3><IMG src="graphics/html.gif" x-claris-useimagewidth=""
+    x-claris-useimageheight="" align="middle">RAW HTML LINKS</H3>
+
+    <P>To link your Web page to other Web sites, e-mail addresses,
+    and other online pages, you will use the <B>&lt;A&gt;</B> tag.
+    You will also need the URL name for the link.</P>
+
+    <H3><A name="linkdocs"></A>Linking to Other Documents</H3>
+
+    <BLOCKQUOTE>
+      <P>The chief power of HTML comes from its ability to link
+      regions of text (and also images) to another document. A
+      "local" link is a link to a document on your own computer as
+      opposed to a link to document on another computer across the
+      network. The browser highlights these regions (usually with
+      color and/or underlines) to indicate that they are hypertext
+      links (often shortened to hyperlinks or simply links).</P>
+
+      <P>HTML's single hypertext-related tag is &lt;A&gt;, which
+      stands for anchor. To include an anchor in your document:</P>
+
+      <OL>
+        <LI>Start the anchor with &lt;A . (There's a space after
+        the A.)</LI>
+
+        <LI>Specify the document that's being pointed to by
+        entering the parameter HREF="filename" followed by a
+        closing right angle bracket: &gt;</LI>
+
+        <LI>Enter the text that will serve as the hypertext link in
+        the current document.</LI>
+
+        <LI>Enter the ending anchor tag: &lt;/A&gt;</LI>
+      </OL>
+
+      <P>Here is a sample hypertext reference:</P>
+
+      <P>&lt;A HREF="MaineStats.html"&gt;Maine&lt;/A&gt;</P>
+
+      <P>This entry makes the word "Maine'' the hyperlink to the
+      document MaineStats.html, which is in the same directory as
+      the first document.</P>
+
+      <BLOCKQUOTE>
+        <UL>
+          <LI>First, type: <B>&lt;A HREF="</B><I>location name goes
+          here</I><B>"&gt;</B>.</LI>
+
+          <LI>Second, type the words that will be the highlighted
+          text.</LI>
+
+          <LI>After this type <B>&lt;/A&gt;</B>.</LI>
+        </UL>
+
+        <P>Example: &lt;A
+        HREF="http://www.link.com/train.html"&gt;Train
+        page&lt;/A&gt;</P>
+      </BLOCKQUOTE>
+
+      <P>This simple, but powerful tag enables your reader to
+      travel anywhere on the Internet. The <B>&lt;A&gt;</B> tag
+      creates the link. The <B>HREF</B> attribute stands for
+      Hypertext Reference. After <B>HREF="</B> is the location or
+      URL for where you are linking to followed by the ending quote
+      (<B>"</B>). The text or image that follows should be
+      active.</P>
+
+      <P><IMG src="graphics/smbulb.gif" align="left" height="19"
+      width="22">NOTE: Make sure you have the URL case sensitive
+      and complete. If there is even the slightest error the link
+      may not work.</P>
+
+      <P>To create an e-mail link:</P>
+
+      <UL>
+        <LI>First, type: <B>&lt;A HREF="mailto:</B> <I>the e-mail
+        address</I><B>"&gt;</B>. The text will probably be the
+        e-mail address, then <B>&lt;/A&gt;</B>. Again it is similar
+        to the linking of Web pages except for the <B>mailto:</B>
+        before the e-mail address. <B>NOTE</B>: There is no space
+        between the colon and the e-mail address. Example: &lt;A
+        HREF="mailto:ilinc@train.com"&gt;mailto:ilinc@train.com&lt;/A&gt;</LI>
+      </UL>
+    </BLOCKQUOTE>
+    <HR align="left">
+
+    <H3><A name="linkinter"></A></H3>
+
+    <H3><IMG src="graphics/html.gif" x-claris-useimagewidth=""
+    x-claris-useimageheight="" align="middle">RAW HTML LINKS TO THE
+    INTERNET</H3>
+
+    <BLOCKQUOTE>
+      <P>You will follow the same procedure for linking pages to
+      the Internet.</P>
+
+      <P align="right"><A href="#html">Back to the top</A></P>
+    </BLOCKQUOTE>
+    <HR align="left">
+
+    <H3><A name="anchors"></A><IMG src="graphics/html.gif" align=
+    "bottom">RAW HTML ANCHORS (LINKS WITHIN A PAGE)</H3>
+
+    <BLOCKQUOTE>
+      <P>Using the <B>NAME</B> attribute enables you to create
+      links to certain sections of your Web page. You need to
+      decide where on your page you will send the reader. On this
+      page, if you had clicked on the HTML Format Tutorial, you
+      were sent to the title of this section. The destination of
+      the link is anchored by NAME. When writing your page, the
+      destination must be surrounded with the tags &lt;A
+      NAME="<I>the designated text</I>"&gt; and &lt;/A&gt;.</P>
+
+      <P>First, go to the designated text, for example, "HTML," and
+      surround it with the tags &lt;A NAME="HTML"&gt; and
+      &lt;/A&gt;. Note: the space between the A and NAME, the use
+      of the quotation marks and inequality symbols, and ending
+      with just the &lt;/A&gt;.</P>
+
+      <P>Next, go to the text you want to link from and surround it
+      with the tags &lt;A HREF="#HTML"&gt; and &lt;/A&gt;. Note:
+      the change to HREF and the # sign before the designed text
+      reference name.</P>
+
+      <P>Click on the link and the reader should see the designated
+      text now on the top of the page instead of having to scroll
+      down your Web page.</P>
+    </BLOCKQUOTE>
+    <HR align="left">
+
+    <BLOCKQUOTE>
+      <P>&nbsp;</P>
+    </BLOCKQUOTE>
+
+    <H3><A name="graphics"></A><IMG src="graphics/html.gif" align=
+    "bottom">RAW HTML WITH GRAPHICS</H3>
+
+    <BLOCKQUOTE>
+      <H4><A name="inline"></A>Inline Image</H4>
+
+      <P>An inline image is an image that appears on your page. You
+      do not have to click on a link to get the image. Images take
+      longer to load than text so you should think carefully about
+      the size and number of images you choose for your pages. HTML
+      source code for an image looks like the following:</P>
+
+      <P>&lt;IMG SRC="mydog.gif"&gt;</P>
+
+      <P>What goes between the quotes is the URL for the image
+      file.</P>
+
+      <P>If you do not have Adobe PageMill, then you would use a
+      text editor, such as SimpleText on a Macintosh, and type the
+      HTML. For this example, the HTML is "&lt;IMG Align=Top
+      SRC="graphics/dir.gif"&gt;. You can add ALIGN=TOP or
+      ALIGN=MIDDLE to your command to align the image next to text
+      on the same line. You can also add ALT="alternate text" to
+      take care of users who don't display graphics. For example,
+      &lt;IMG SRC= "graphics/write_graphics1.gif" ALIGN=MIDDLE
+      ALT="Fermilab Logo"&gt;.</P>
+
+      <P><B>More HTML for Images</B></P>
+
+      <P>These additional commands make the graphics on your pages
+      look much nicer. Here are two examples: Here is an example of
+      <IMG src="graphics/write_graphics1.gif" align="right">using
+      the ALIGN="RIGHT" modifier to display an image. You notice
+      the text is wrapped around the image that appears on the
+      right-hand side. You can put the command any place in the
+      text that you want, even in the middle of a sentence. Just
+      experiment and see how it looks. You can add breaks in the
+      text or new paragraphs as well (e.g., &lt;BR&gt;or
+      &lt;P&gt;). The HTML to display this image is: &lt;IMG
+      ALIGN="RIGHT" SRC="graphics/write_graphics1.gif"&gt;.</P>
+
+      <P><IMG src="graphics/write_graphics1.gif" align="left">Here
+      is an example of using the ALIGN="LEFT" modifier to display
+      an image. You notice the text is wrapped around the image
+      that appears on the left-hand side. The HTML to display this
+      image is: &lt;IMG ALIGN="LEFT"
+      SRC="graphics/write_graphics1.gif"&gt;.</P>
+
+      <P>A helpful command to use when you are using right- and
+      left-aligned images is <B>&lt;BR CLEAR=ALL&gt;</B>. It forces
+      a break in the text so that subsequent text does not continue
+      to wrap around a large image. Look at the difference in how
+      the text wraps around the images with and without the
+      command.</P>
+
+      <P><B>Without the Command</B></P>
+
+      <P>If I have a new heading, I cannot get the new heading to
+      start after the <IMG src="graphics/write_graphics_ball.gif"
+      align="left">picture of the ball where I want it.</P>
+    </BLOCKQUOTE>
+
+    <P>&nbsp;</P>
+
+    <P><B>Failed New Heading</B></P>
+
+    <P>&nbsp;</P>
+
+    <BLOCKQUOTE>
+      <P><B>With the &lt;BR CLEAR="ALL&gt;" Command</B></P>
+
+      <P>If I use the &lt;BR command before the new heading, I can
+      get the new <IMG src="graphics/write_graphics_ball.gif"
+      align="left">heading to start where I want it, under the
+      picture of the ball on the left.</P>
+    </BLOCKQUOTE>
+
+    <P>&nbsp;</P>
+
+    <P>&nbsp;</P>
+
+    <BLOCKQUOTE>
+      <BLOCKQUOTE>
+        <H4>Successful New Heading</H4>
+      </BLOCKQUOTE>
+    </BLOCKQUOTE>
+    <HR align="left">
+
+    <H3><IMG src="graphics/star.gif" align="middle" height="19"
+    width="17">Using the Images:</H3>
+
+    <P>Good Web pages should be easy to read while being attractive
+    to see. Place your images, buttons, bars, etc. to draw the
+    reader's eye. Remember that not everyone will be using the same
+    hardware and software to view as you used to create your
+    project Web pages. If possible, look at your Web pages with
+    various computers, monitors, and Internet connections. Look at
+    different Web pages on the Internet to obtain different ideas
+    for your Web pages.</P>
+
+    <P align="right"><A href="#html">Back to the top</A></P>
+    <HR align="left">
+
+    <P><A name="resources"></A><B><FONT size="+1">Internet
+    Resources on HTML</FONT></B></P>
+
+    <P>You can read about more commands to control displaying
+    images by referring to <A href=
+    "http://werbach.com/barebones/">The Bare Bones Guide to
+    HTML</A> site and clicking on the HTML sections on
+    graphics.</P>
+
+    <P>This was just a list of the basic tags. If this caused you
+    to think about other possibilities, here are some Web sites
+    that extend the basics:<SPAN style=
+    "text-decoration: underline;"><BR></SPAN></P>
+
+    <P><A href="http://www.htmlcodetutorial.com/">HTML Code
+    Turtorials&nbsp;</A>&nbsp; http://www.htmlcodetutorial.com/</P>
+
+    <P><A href="http://www.w3.org/MarkUp/Guide/">Getting Started
+    with HTML</A>&nbsp; http://www.w3.org/MarkUp/Guide/</P>
+
+    <P align="right"><A href="tech_web_editor.shtml#pagemill">Back
+    to the top.</A></P>
+    <HR align="left">
+
+    <H2>Task:&nbsp;</H2>
+
+    <P><IMG src="graphics/checklist.gif" align="left">Try doing
+    your own search for more on HTML basics and send your results
+    according to your facilitator's instructions, if assigned to do
+    so.</P>
+  </DIV>
+
+  <DIV id="footer">
+    <P>
+    <P>Fermilab LInC is sponsored by the Fermilab Education Office and the Fermilab Friends for Science Education and supported in part by the Office of High Energy Physics, Office of Science, U.S. Department of Energy, the Illinois State Board of Education and the National Science Foundation. Opinions expressed are those of the authors and not necessarily those of the Department, State or Foundation. </P>
+
+</BLOCKQUOTE>
+</P>Authors:
+    Laura Mengel, Sharon White and Cheryl LaMaster<BR>
+    Collaborators: <A href="/lincon/team.shtml">LInC
+    Leaders</A><BR>
+    Created: August 1, 1997 - Updated: July 17, 2006<BR>
+    URL: http://ed.fnal.gov/lincon/tech_web_html.shtml
+  </DIV>
+</BODY>
+</HTML>
