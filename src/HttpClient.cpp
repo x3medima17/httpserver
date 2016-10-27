@@ -14,7 +14,10 @@ HttpClient::HttpClient(std::string host = "", std::string URI = "", int port = 8
             method(method)
 {}
 
-
+void HttpClient::add_header(const std::string& header, const std::string& value)
+{
+    Headers.insert({header, value});
+}
 
 HttpClient::HttpClient(std::string raw) : HttpClient()
 {
@@ -50,6 +53,10 @@ void HttpClient::fetch()
     Socket sock(host,port);
     HttpRequest req(method, URI);
     req.set_host(host);
+
+    for(auto& header: Headers)
+        req.add_header(header.first, header.second);
+
     sock.connect();
     sock.send(req.__to_string());
     auto tmp = Utils::get_http_message<HttpResponse>(sock);

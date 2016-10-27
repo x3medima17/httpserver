@@ -61,6 +61,12 @@ void HttpRequest::set_host(std::string host)
     Headers["Host"] = host;
 }
 
+
+void HttpRequest::add_header(const std::string& header, std::string& value)
+{
+    Headers.insert({header, value});
+}
+
 void HttpRequest::print() const
 {
 	std::cout<<"Status:\t\t"<<status<<'\n';

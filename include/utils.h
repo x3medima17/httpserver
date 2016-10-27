@@ -2,8 +2,12 @@
 
 #include <memory>
 #include <vector>
+#include <map>
 
-#include "HttpMessage.h"
+#include "socket.h"
+
+class HttpMessage;
+
 
 namespace Utils {
 
@@ -14,8 +18,8 @@ namespace Utils {
             std::pair<int,std::string> tmp;
             do
             {
-                    tmp = client.recv(128);
-            data += tmp.second;
+                tmp = client.recv(128);
+                data += tmp.second;
             if(tmp.first < 2)
                 break;
         } while(data.substr(data.size()-4,4) != "\r\n\r\n" && tmp.first == 128 );
@@ -38,5 +42,7 @@ namespace Utils {
     const std::vector<std::string> HttpMethods = {"GET", "POST"};
 
     enum http_methods {GET, POST};
+
+    typedef std::map<std::string, std::string> VecHeaders;
 }
 

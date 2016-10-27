@@ -74,7 +74,7 @@ std::vector<std::string> HttpMessage::split(const std::string& target, const std
 
 
 
-HttpMessage::VecHeaders HttpMessage::get_headers() const { return Headers; }
+Utils::VecHeaders HttpMessage::get_headers() const { return Headers; }
 std::string HttpMessage::get_version() const { return version; }
 std::string HttpMessage::get_content() const { return content; }
 int HttpMessage::get_status() const { return status; }

@@ -1,3 +1,4 @@
+
 #include "RequestHandler.h"
 #include <iostream>
 #include <fstream>
@@ -40,4 +41,11 @@ std::string RequestHandler::get_content() const
 {
 
     return content;
+}
+
+
+// TODO : catch multiple inserts
+void RequestHandler::add_header(const std::string& header, const std::string& value)
+{
+    Headers.insert({header, value});
 }

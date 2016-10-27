@@ -40,6 +40,16 @@ class Html : public RequestHandler
     }
 };
 
+
+class Hello : public RequestHandler
+{
+    void get()
+    {
+        write("Hello World\n");
+    }
+};
+
+
 int main()
 {
 /*
@@ -52,6 +62,7 @@ int main()
 
     H["/"] = std::shared_ptr<RequestHandler>(new Main);
     H["/web"] = std::shared_ptr<RequestHandler>(new Html);
+    H["/hello"] = std::shared_ptr<RequestHandler>(new Hello);
 
     HttpApplication app(H);
     HttpServer server(app);

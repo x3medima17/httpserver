@@ -147,3 +147,22 @@ TEST(cli, fetch_headers)
 
 }
 
+TEST(cli, headers)
+{
+    HttpClient cli("http://localhost/");
+    Utils::VecHeaders V = {
+        { "Server",  "nginx" },
+        { "Content-Type", "text/html; charset=utf-8"},
+        { "Content-Length", "0" },
+        { "Connection", "keep-alive" },
+        { "Access-Control-Allow-Origin", "*"},
+        { "Access-Control-Allow-Credentials", "true"}
+    };
+    for(auto& header : V)
+        cli.add_header(header.first, header.second);
+
+    EXPECT_EQ(cli.get_status(), 0);
+
+}
+
+

@@ -5,6 +5,7 @@
 *.o
 *.log
 
+client
 log.txt
 httpserver*
 CMakeCache.txt

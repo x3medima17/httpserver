@@ -5,15 +5,16 @@
 #include <vector>
 #include <map>
 #include "socket.h"
+#include "utils.h"
 
 class HttpMessage
 {
 public:
-    typedef std::map<std::string, std::string> VecHeaders;
+
 
 
     //Getters
-    VecHeaders  get_headers() const;
+    Utils::VecHeaders  get_headers() const;
     std::string get_version() const;
     std::string get_content() const;
     int get_content_length() const;
@@ -28,7 +29,7 @@ protected:
     HttpMessage(const std::string&, const std::string& , int);
 
     std::vector<std::string> split(const std::string&, const std::string&);
-    VecHeaders Headers;
+    Utils::VecHeaders Headers;
 
     std::string version{"HTTP/1.1"};
     std::string content{""};

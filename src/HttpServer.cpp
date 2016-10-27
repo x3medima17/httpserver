@@ -63,10 +63,14 @@ HttpResponse HttpServer::process_request(HttpRequest& req)
         return HttpResponse(400);
 
     auto host_it  = req.get_headers().find("Host");
+
     if(host_it == req.get_headers().end())
         return HttpResponse(400, "No host specified");
 
     auto handler_it = app.handlers.find(req.get_uri());
+
+    if(handler_it == app.handlers.end())
+        handler_it = app.handlers.find("/*");
 
     if(handler_it == app.handlers.end())
         return  HttpResponse(404, "Not found");

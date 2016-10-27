@@ -16,7 +16,9 @@ public:
     std::string get_uri() const;
     Utils::http_methods get_method() const;
 
+    void add_header(const std::string&, const std::string&);
     void fetch();
+
 
     HttpResponse response;
 
@@ -24,9 +26,11 @@ private:
     HttpClient(std::string, std::string, int, int, Utils::http_methods);
 
 
-    std::string host,URI;
-    int port,status;
-    Utils::http_methods method;
-
+    std::string host{""};
+    std::string URI{""};
+    int port{80};
+    int status{-1};
+    Utils::http_methods method{Utils::http_methods::GET};
+    Utils::VecHeaders Headers;
 
 };

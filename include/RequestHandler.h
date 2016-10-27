@@ -1,7 +1,6 @@
 #pragma once
 
 #include <string>
-#include <map>
 #include "HttpRequest.h"
 //class HttpRequest;
 
@@ -18,7 +17,11 @@ public:
 protected:
 	void write(std::string);
 	void render(std::string);
-        std::string content;
+        void add_header(const std::string&, const std::string&);
+
+        std::string content{""};
+
         HttpRequest request;
+        Utils::VecHeaders Headers;
 
 };

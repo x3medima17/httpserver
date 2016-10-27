@@ -19,6 +19,7 @@ public:
         HttpRequest(const std::string&, const std::string& = "", int ip = 80);
         HttpRequest();
 
+        void add_header(const std::string&, std::string&);
         // Misc
         void print() const;
         std::string __to_string() const;

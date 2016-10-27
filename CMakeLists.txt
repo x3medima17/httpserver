@@ -68,3 +68,4 @@ add_test(test1 ${PROJECT_TEST_NAME})
 include_directories ("include")
 
 add_executable (httpserver ${SOURCES} main.cpp)
+add_executable (proxy ${SOURCES} proxy.cpp)
