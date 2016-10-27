@@ -5,6 +5,7 @@
 *.o
 *.log
 
+log.txt
 httpserver*
 CMakeCache.txt
 cmake_install.cmake
