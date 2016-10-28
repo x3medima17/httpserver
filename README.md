@@ -31,7 +31,8 @@ $ ./httpserver
 ~~~
 ~~~ sh
 $ sudo ./proxy
-~~
+~~~
+
 Now you can access http://localhost/ from your browser.
 There are 4 predefined pages:
 ~~~
