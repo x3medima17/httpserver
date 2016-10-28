@@ -6,5 +6,5 @@ CXX_FLAGS =  -std=c++11 -g   -Wall -ansi -Wno-deprecated -pthread -std=c++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/dumitru/httpserver/include 
+CXX_INCLUDES = -I/home/dumitru/httpserver/ext/gtest/src/googletest/googletest/include -I/home/dumitru/httpserver/include 
 

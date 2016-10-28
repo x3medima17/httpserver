@@ -552,3 +552,31 @@ make[1]: Leaving directory '/home/dumitru/httpserver/CMakeFiles/CMakeTmp'
     Feature record: CXX_FEATURE:0cxx_variable_templates
     Feature record: CXX_FEATURE:0cxx_variadic_macros
     Feature record: CXX_FEATURE:0cxx_variadic_templates
+Determining if the include file pthread.h exists passed with the following output:
+Change Dir: /home/dumitru/httpserver/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_d15b6/fast"
+/usr/bin/make -f CMakeFiles/cmTC_d15b6.dir/build.make CMakeFiles/cmTC_d15b6.dir/build
+make[1]: Entering directory '/home/dumitru/httpserver/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_d15b6.dir/CheckIncludeFile.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_d15b6.dir/CheckIncludeFile.c.o   -c /home/dumitru/httpserver/CMakeFiles/CMakeTmp/CheckIncludeFile.c
+Linking C executable cmTC_d15b6
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_d15b6.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_d15b6.dir/CheckIncludeFile.c.o  -o cmTC_d15b6 -rdynamic 
+make[1]: Leaving directory '/home/dumitru/httpserver/CMakeFiles/CMakeTmp'
+
+
+Determining if the function pthread_create exists in the pthread passed with the following output:
+Change Dir: /home/dumitru/httpserver/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_48f46/fast"
+/usr/bin/make -f CMakeFiles/cmTC_48f46.dir/build.make CMakeFiles/cmTC_48f46.dir/build
+make[1]: Entering directory '/home/dumitru/httpserver/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_48f46.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_48f46.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_48f46
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_48f46.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_48f46.dir/CheckFunctionExists.c.o  -o cmTC_48f46 -rdynamic -lpthread 
+make[1]: Leaving directory '/home/dumitru/httpserver/CMakeFiles/CMakeTmp'
+
+
