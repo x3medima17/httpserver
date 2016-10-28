@@ -24,7 +24,7 @@ void Logger::flush()
         char ch;
         int lines = 0;
 
-        FILE* f = fopen("log.txt","r");
+        FILE* f = fopen(fname.c_str(),"r");
 
         do
         {
@@ -34,7 +34,7 @@ void Logger::flush()
         }while(ch != EOF);
         fclose(f);
 
-        if ((fd = open("log.txt", O_RDWR|O_APPEND)) == -1)
+        if ((fd = open(fname.c_str(), O_RDWR|O_APPEND)) == -1)
             throw std::runtime_error("Open log error");
 
         //Getting the lock

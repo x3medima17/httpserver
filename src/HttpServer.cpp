@@ -101,7 +101,7 @@ HttpResponse HttpServer::process_request(HttpRequest& req)
 
 void HttpServer::start()
 {
-	while(1)
+    while(1)
 	{
         Logger log;
         Socket client = sock->accept();

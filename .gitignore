@@ -11,11 +11,6 @@ proxy
 
 httpserver.txt
 CMakeCache.txt
-cmake_install.cmake
-Makefile
-CTestTestfile.cmake
-CMakeLists.txt.user
 
 Testing/
 build/
-CMakeFiles/

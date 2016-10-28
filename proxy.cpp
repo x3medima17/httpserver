@@ -20,11 +20,12 @@ class Proxy : public RequestHandler
 public:
     void get()
     {
-        Logger log("log.txt");
+        Logger log("proxy.log");
         std::string URI = request.get_uri();
         std::string url = "http://" + HOST + ":" + std::to_string(IP) + URI;
 
         log<<request.get_remote_ip()<<":"<<request.get_remote_port()<<" "<<HOST<<":"<<IP<<" GET "<<URI;
+        log.flush();
         HttpClient cli(url);
 
         //Add headers
@@ -38,7 +39,7 @@ public:
             if(header.first != "Content-length")
                 cli.add_header(header.first, header.second);
         write(cli.response.get_content());
-        log.flush();
+
     }
 };
 

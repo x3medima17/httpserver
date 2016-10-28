@@ -1,0 +1,59 @@
+Determining if the pthread_create exist failed with the following output:
+Change Dir: /home/dumitru/httpserver/ext/gtest/src/googletest-build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_32f2b/fast"
+make[3]: Entering directory '/home/dumitru/httpserver/ext/gtest/src/googletest-build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_32f2b.dir/build.make CMakeFiles/cmTC_32f2b.dir/build
+make[4]: Entering directory '/home/dumitru/httpserver/ext/gtest/src/googletest-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_32f2b.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_32f2b.dir/CheckSymbolExists.c.o   -c /home/dumitru/httpserver/ext/gtest/src/googletest-build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_32f2b
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_32f2b.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_32f2b.dir/CheckSymbolExists.c.o  -o cmTC_32f2b -rdynamic 
+CMakeFiles/cmTC_32f2b.dir/CheckSymbolExists.c.o: In function `main':
+CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_32f2b.dir/build.make:97: recipe for target 'cmTC_32f2b' failed
+make[4]: *** [cmTC_32f2b] Error 1
+make[4]: Leaving directory '/home/dumitru/httpserver/ext/gtest/src/googletest-build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_32f2b/fast' failed
+make[3]: *** [cmTC_32f2b/fast] Error 2
+make[3]: Leaving directory '/home/dumitru/httpserver/ext/gtest/src/googletest-build/CMakeFiles/CMakeTmp'
+
+File /home/dumitru/httpserver/ext/gtest/src/googletest-build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+/* */
+#include <pthread.h>
+
+int main(int argc, char** argv)
+{
+  (void)argv;
+#ifndef pthread_create
+  return ((int*)(&pthread_create))[argc];
+#else
+  (void)argc;
+  return 0;
+#endif
+}
+
+Determining if the function pthread_create exists in the pthreads failed with the following output:
+Change Dir: /home/dumitru/httpserver/ext/gtest/src/googletest-build/CMakeFiles/CMakeTmp
+
+Run Build Command:"/usr/bin/make" "cmTC_3de84/fast"
+make[3]: Entering directory '/home/dumitru/httpserver/ext/gtest/src/googletest-build/CMakeFiles/CMakeTmp'
+/usr/bin/make -f CMakeFiles/cmTC_3de84.dir/build.make CMakeFiles/cmTC_3de84.dir/build
+make[4]: Entering directory '/home/dumitru/httpserver/ext/gtest/src/googletest-build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_3de84.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_3de84.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_3de84
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_3de84.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_3de84.dir/CheckFunctionExists.c.o  -o cmTC_3de84 -rdynamic -lpthreads 
+/usr/bin/ld: cannot find -lpthreads
+collect2: error: ld returned 1 exit status
+CMakeFiles/cmTC_3de84.dir/build.make:97: recipe for target 'cmTC_3de84' failed
+make[4]: *** [cmTC_3de84] Error 1
+make[4]: Leaving directory '/home/dumitru/httpserver/ext/gtest/src/googletest-build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_3de84/fast' failed
+make[3]: *** [cmTC_3de84/fast] Error 2
+make[3]: Leaving directory '/home/dumitru/httpserver/ext/gtest/src/googletest-build/CMakeFiles/CMakeTmp'
+
+
