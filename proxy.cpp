@@ -24,6 +24,7 @@ public:
         std::string URI = request.get_uri();
         std::string url = "http://" + HOST + ":" + std::to_string(IP) + URI;
 
+        log<<request.get_remote_ip()<<":"<<request.get_remote_port()<<" "<<HOST<<":"<<IP<<" GET "<<URI;
         HttpClient cli(url);
 
         //Add headers
@@ -56,7 +57,7 @@ int main()
 
     HttpApplication app(H);
     HttpServer server(app);
-    server.bind(8080);
+    server.bind(80);
 
     server.listen(100);
     std::cout<<"Starting proxy..."<<std::endl;

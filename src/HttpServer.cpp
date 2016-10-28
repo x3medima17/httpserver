@@ -111,6 +111,7 @@ void HttpServer::start()
         {
 
             log<<"Established connection with "<<sock->get_remote_ip()<<" on port "<<sock->get_remote_port()<<"\n";
+            log.flush();
             sock->close();
             auto req = Utils::get_http_message<HttpRequest>(client);
             std::shared_ptr<HttpRequest> pt = std::dynamic_pointer_cast<HttpRequest>(req);
@@ -121,7 +122,8 @@ void HttpServer::start()
             client.send(response.__to_string());
             client.close();
             log<<"Connection closed\n";
-            break;
+            log.flush();
+            exit(0);
         }
         else
             client.close();

@@ -16,15 +16,11 @@ class Main : public RequestHandler
 public:
     void get()
     {
-        Logger log("log.txt");
-        log<<"Got request from "<<request.get_remote_ip()<<" on port "<<request.get_remote_port();
         std::this_thread::sleep_for(std::chrono::milliseconds(2000));
 
 
-        log.flush();
         write("data\n");
 
-        //render("index.html");
     }
 };
 
@@ -32,9 +28,6 @@ class Html : public RequestHandler
 {
     void get()
     {
-        Logger log("log.txt");
-        log<<"Got request from "<<request.get_remote_ip()<<" on port "<<request.get_remote_port()<<" on page /web";
-        log.flush();
 
         render("web.html");
     }
