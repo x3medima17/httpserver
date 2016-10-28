@@ -45,12 +45,7 @@ public:
 
 int main()
 {
-/*
-    HttpClient cli("http://localhost:8081/");
-    cli.fetch();
-    std::cout<<cli.response.get_content();
-    return 0;
-*/
+
     std::map<std::string, std::shared_ptr<RequestHandler>> H;
 
     H["/*"] = std::shared_ptr<RequestHandler>(new Proxy);

@@ -16,19 +16,31 @@ First of all clone or download this repository.
 $ git clone https://github.com/x3medima17/httpserver
 ~~~
 
-Then make project, it will produce `server` executable.
+You need CMake to build this project.
 ~~~ sh
+$ cmake .
 $ make
 ~~~
+It will produce 3 executables: `httpserver`, `proxy`, `httppserver_test`.
 
 Usage
 -----
-To use it you need to start server process. By default it binds to port 8081.
+To use it you need to start httpserver and proxy  processes. Httpserver binds to 8081 port while proxy binds to port 80.
 ~~~ sh
-$ ./server 
+$ ./httpserver
 ~~~
-Now you can access http://localhost:8081 from your browser.
-
+~~~ sh
+$ sudo ./proxy
+~~
+Now you can access http://localhost/ from your browser.
+There are 4 predefined pages:
+~~~
+http://localost/
+http://localhost/hello
+http://localhost/web
+http://localhost/index
+~~~
+Highly recommend to take a look to the sources.
 
 Hello, world
 ------------
@@ -47,7 +59,7 @@ class Main : public RequestHandler
 public:
         void get()
         {
-                this->write("Hello, World!");
+               render("index.html!");
         }
 };
 

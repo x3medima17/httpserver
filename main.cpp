@@ -16,9 +16,6 @@ class Main : public RequestHandler
 public:
     void get()
     {
-        std::this_thread::sleep_for(std::chrono::milliseconds(2000));
-
-
         write("data\n");
 
     }
@@ -34,6 +31,14 @@ class Html : public RequestHandler
 };
 
 
+class Index : public RequestHandler
+{
+    void get()
+    {
+        render("index.html");
+    }
+};
+
 class Hello : public RequestHandler
 {
     void get()
@@ -45,17 +50,13 @@ class Hello : public RequestHandler
 
 int main()
 {
-/*
-    HttpClient cli("http://localhost:8081/");
-    cli.fetch();
-    std::cout<<cli.response.get_content();
-    return 0;
-*/
     std::map<std::string, std::shared_ptr<RequestHandler>> H;
 
     H["/"] = std::shared_ptr<RequestHandler>(new Main);
     H["/web"] = std::shared_ptr<RequestHandler>(new Html);
     H["/hello"] = std::shared_ptr<RequestHandler>(new Hello);
+    H["/index"] = std::shared_ptr<RequestHandler>(new Index);
+
 
     HttpApplication app(H);
     HttpServer server(app);
