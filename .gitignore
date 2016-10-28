@@ -3,19 +3,19 @@
 *.swn
 *.ghc
 *.o
-*.log
+*.cbp
 
-client
-log.txt
-httpserver*
+httpserver
+httpserver_test
+proxy
+
+httpserver.txt
 CMakeCache.txt
 cmake_install.cmake
 Makefile
-requests.log
 CTestTestfile.cmake
 CMakeLists.txt.user
 
-ext/
 Testing/
 build/
 CMakeFiles/
