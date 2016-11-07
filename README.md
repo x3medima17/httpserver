@@ -49,8 +49,8 @@ Hello, world
 #include "HttpRequest.h"
 #include "HttpApplication.h"
 #include "RequestHandler.h"
-#include "HttpServer.h"
 #include "HttpResponse.h"
+#include "HttpServer.h"
 
 #include <map>
 #include <iostream>
