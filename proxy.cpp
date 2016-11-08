@@ -11,10 +11,6 @@
 #include <thread>
 #include <chrono>
 
-
-const std::string HOST = "127.0.0.1";
-const int IP = 8081;
-
 class Proxy : public RequestHandler
 {
 public:
@@ -22,7 +18,7 @@ public:
     {
         Logger log("proxy.log");
         std::string URI = request.get_uri();
-        std::string url = "http://" + HOST + ":" + std::to_string(IP) + URI;
+        std::string url = URI;
 
         log<<request.get_remote_ip()<<":"<<request.get_remote_port()<<" "<<HOST<<":"<<IP<<" GET "<<URI;
         log.flush();
