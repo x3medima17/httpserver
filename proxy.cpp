@@ -20,7 +20,7 @@ public:
         std::string URI = request.get_uri();
         std::string url = URI;
 
-        log<<request.get_remote_ip()<<":"<<request.get_remote_port()<<" "<<HOST<<":"<<IP<<" GET "<<URI;
+        log<<request.get_remote_ip()<<":"<<request.get_remote_port()<<" "<<url<<" GET "<<URI;
         log.flush();
         HttpClient cli(url);
 
@@ -28,7 +28,6 @@ public:
         for(auto& header : request.get_headers())
             if(header.first != "Host")
                     cli.add_header(header.first, header.second);
-        cli.add_header("Host", HOST);
         cli.fetch();
 
         for(auto& header : cli.response.get_headers())
@@ -40,10 +39,17 @@ public:
 };
 
 
+template<class T>
+std::shared_ptr<RequestHandler> spawn_handler()
+{
+    return std::make_shared(new T);
+}
+
 int main()
 {
 
     std::map<std::string, std::shared_ptr<RequestHandler>> H;
+
 
     H["/*"] = std::shared_ptr<RequestHandler>(new Proxy);
 
