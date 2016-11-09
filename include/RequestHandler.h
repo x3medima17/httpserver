@@ -2,6 +2,8 @@
 
 #include <string>
 #include "HttpRequest.h"
+#include "utils.h"
+
 //class HttpRequest;
 
 class RequestHandler {

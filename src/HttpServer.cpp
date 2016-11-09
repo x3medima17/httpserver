@@ -8,10 +8,8 @@
 #include <string>
 #include <map>
 #include <iostream>
-
-//template class   HttpServer::get_http_request<HttpRequest>;
-//template  HttpServer::get_http_request<HttpResponse>;
-//template std::shared_ptr<HttpMessage>  HttpServer::get_http_request<HttpResponse>;
+#include <sys/time.h> //FD_SETSET, FD_ZERO macros
+#include <cassert>
 
 
 HttpServer::HttpCodesMap HttpServer::StatusCodes = {
@@ -40,6 +38,7 @@ void HttpServer::bind(int port)
 void HttpServer::listen(int n)
 {
 	sock->listen(n);
+    max_clients = n+1;
 }
 
 
@@ -101,32 +100,78 @@ HttpResponse HttpServer::process_request(HttpRequest& req)
 
 void HttpServer::start()
 {
+    fd_set readfds;
+    std::vector<std::shared_ptr<Socket>> clients(max_clients);
+
+    Logger log;
     while(1)
 	{
-        Logger log;
-        Socket client = sock->accept();
 
-        int pid = fork();
-        if(pid == 0)
+        FD_ZERO(&readfds);
+        FD_SET(sock->get_fd(), &readfds);
+        int max_sd = sock->get_fd();
+
+
+        for(const auto& item : clients)
         {
+            if(item == nullptr)
+                continue;
+            int fd = item->get_fd();
+            if(fd > 0)
+                FD_SET(fd, &readfds);
 
+            if(item->get_fd() > max_sd)
+                max_sd = item->get_fd();
+        }
+
+        int activity = select(max_sd + 1, &readfds, NULL, NULL, NULL);
+        if(activity < 0)
+            perror("select");
+            //throw std::runtime_error("ERROR select error");
+
+        //Listen socket bit is set, new connection
+        if(FD_ISSET(sock->get_fd(), &readfds))
+        {
+            auto ptr = sock->accept();
+            bool found = false;
+            for(auto& item : clients)
+                if(item == nullptr)
+                {
+                    found = true;
+                    item = ptr;
+                    break;
+                }
+            assert(found);
             log<<"Established connection with "<<sock->get_remote_ip()<<" on port "<<sock->get_remote_port()<<"\n";
             log.flush();
-            sock->close();
-            auto req = Utils::get_http_message<HttpRequest>(client);
-            std::shared_ptr<HttpRequest> pt = std::dynamic_pointer_cast<HttpRequest>(req);
-            log<<Utils::HttpMethods.at(pt->get_method())<<" "<<pt->get_uri()<<"\n";
 
-            auto response = process_request(*pt);
-
-            client.send(response.__to_string());
-            client.close();
-            log<<"Connection closed\n";
-            log.flush();
-            exit(0);
         }
-        else
-            client.close();
+
+        //Check clients for new events
+        for(auto& client : clients)
+        {
+            if(client == nullptr)
+                continue;
+            if(FD_ISSET(client->get_fd(), &readfds))
+            {
+                auto req = Utils::get_http_message<HttpRequest>(*client);
+                std::shared_ptr<HttpRequest> pt = std::dynamic_pointer_cast<HttpRequest>(req);
+                log<<Utils::HttpMethods.at(pt->get_method())<<" "<<pt->get_uri()<<"\n";
+
+                auto response = process_request(*pt);
+
+                client->send(response.__to_string());
+                //client->close();
+
+                client = nullptr;
+
+                log<<"Connection closed\n";
+                log.flush();
+            }
+        }
+
+        continue;
+
 	}
 }
 

@@ -7,7 +7,7 @@
 #include "socket.h"
 
 class HttpMessage;
-
+class RequestHandler;
 
 namespace Utils {
 

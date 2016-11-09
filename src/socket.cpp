@@ -9,7 +9,7 @@
 #include "socket.h"
 #include <utility>
 #include <vector>
-
+#include <memory>
 
 void error(std::string msg)
 {
@@ -89,25 +89,27 @@ void Socket::connect()
 {
 	if(this->socket_type != Socket::CLIENT) 
 		throw std::runtime_error("Only client can invoke connect()");
+    
 	if (::connect(this->sockfd,(struct sockaddr *) &(this->serv_addr),sizeof(this->serv_addr)) < 0)
         	throw std::runtime_error("ERROR connecting");
 
 }
 
-Socket Socket::accept()
+std::shared_ptr<Socket> Socket::accept()
 {
 
 	if(this->socket_type != Socket::SERVER) 
 		throw std::runtime_error("Only server can invoke accept()");
-	Socket client_socket;
+
+    std::shared_ptr<Socket> client_socket(new Socket);
 	
 	socklen_t clilen;
 	clilen = sizeof(this->cli_addr);
 	
-	client_socket.sockfd  = ::accept(this->sockfd, 
+    client_socket->sockfd  = ::accept(this->sockfd,
 	(struct sockaddr *) &(this->cli_addr), 
                  &clilen);
-	if (client_socket.sockfd < 0) 
+    if (client_socket->sockfd < 0)
 		throw std::runtime_error("ERROR on accept");
 	
 	return client_socket;
@@ -160,8 +162,11 @@ int Socket::get_remote_port() const
     return port_c;
 }
 
+int Socket::get_fd() const { return sockfd; }
+
 void Socket::close()
 {
+    std::cout<<"Socket closed"<<std::endl;
 	::close(this->sockfd);
 }
 

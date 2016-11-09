@@ -24,7 +24,8 @@ typedef std::map<int, std::string> HttpCodesMap;
 private:
 	HttpApplication app;
 	std::unique_ptr<Socket> sock;
-	
+        int max_clients{ 0 };
+
         HttpResponse process_request(HttpRequest&);
         void setup_handler(std::shared_ptr<RequestHandler>, HttpRequest&);
 

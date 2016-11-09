@@ -1,6 +1,4 @@
-#ifndef SOCKET_H_
-#define SOCKET_H_
-
+#pragma once
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -11,7 +9,7 @@
 #include <netdb.h>
 #include <string>
 #include <utility>
-
+#include <memory>
 
 class Socket {
 private:
@@ -20,28 +18,28 @@ private:
 	int port, n;
 	sockaddr_in serv_addr, cli_addr;
 	hostent* server;
+        int sockfd;
 
 	void create_base();
 	
 public:
-	int sockfd;
+
 	Socket(int port);
 	Socket(std::string host, int port);
 	Socket();
 	void bind();
 	void listen(int n);
 	void connect();
-	Socket accept();
+        std::shared_ptr<Socket> accept();
 	std::pair<int, std::string> recv(int length);
         int send(std::string msg);
 
         std::string get_remote_ip() const;
         int get_remote_port() const;
+        int get_fd() const;
 
 	void close();
 	
 	~Socket();
 	Socket operator=(const Socket&);
 };
-
-#endif

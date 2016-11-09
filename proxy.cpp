@@ -39,11 +39,6 @@ public:
 };
 
 
-template<class T>
-std::shared_ptr<RequestHandler> spawn_handler()
-{
-    return std::make_shared(new T);
-}
 
 int main()
 {

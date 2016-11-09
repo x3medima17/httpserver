@@ -129,6 +129,10 @@ map
 -
 iostream
 -
+sys/time.h
+-
+cassert
+-
 
 /home/dumitru/httpserver/src/Logger.cpp
 Logger.h
@@ -179,6 +183,8 @@ utility
 -
 vector
 -
+memory
+-
 cassert
 -
 
@@ -191,6 +197,8 @@ memory
 -
 RequestHandler.h
 include/RequestHandler.h
+utils.h
+include/utils.h
 
 include/HttpClient.h
 string
@@ -265,6 +273,8 @@ string
 -
 HttpRequest.h
 include/HttpRequest.h
+utils.h
+include/utils.h
 
 include/socket.h
 stdio.h
@@ -286,6 +296,8 @@ netdb.h
 string
 -
 utility
+-
+memory
 -
 
 include/utils.h
