@@ -11,6 +11,28 @@ class RequestHandler;
 
 namespace Utils {
 
+    class iHandler{
+    public:
+        virtual std::shared_ptr<RequestHandler> make() = 0;
+    };
+
+    template<class T>
+    class Handler : public iHandler
+    {
+    public:
+        std::shared_ptr<RequestHandler> make()
+        {
+            return std::shared_ptr<RequestHandler>(new T);
+        }
+
+    };
+
+    template<class T>
+    std::shared_ptr<iHandler> make_handler()
+    {
+        return std::shared_ptr<iHandler>(new Handler<T>());
+    }
+
     template<class T>
     std::shared_ptr<HttpMessage> get_http_message(Socket &client)
     {

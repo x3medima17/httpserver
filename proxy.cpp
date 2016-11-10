@@ -43,10 +43,9 @@ public:
 int main()
 {
 
-    std::map<std::string, std::shared_ptr<RequestHandler>> H;
+    std::map<std::string, std::shared_ptr<Utils::iHandler>> H;
 
-
-    H["/*"] = std::shared_ptr<RequestHandler>(new Proxy);
+    H["/*"] = Utils::make_handler<Proxy>();
 
     HttpApplication app(H);
     HttpServer server(app);

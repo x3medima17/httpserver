@@ -74,7 +74,7 @@ HttpResponse HttpServer::process_request(HttpRequest& req)
     if(handler_it == app.handlers.end())
         return  HttpResponse(404, "Not found");
 
-    auto handler = handler_it->second;
+    auto handler = handler_it->second->make();
 
     //Setup handler
     setup_handler(handler, req);
@@ -105,8 +105,7 @@ void HttpServer::start()
 
     Logger log;
     while(1)
-	{
-
+    {
         FD_ZERO(&readfds);
         FD_SET(sock->get_fd(), &readfds);
         int max_sd = sock->get_fd();

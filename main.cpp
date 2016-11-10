@@ -48,48 +48,22 @@ class Hello : public RequestHandler
     }
 };
 
-template<class T>
-class Handler
-{
-
-    std::shared_ptr<RequestHandler> operator()()
-    {
-        return std::shared_ptr<RequestHandler>(new T);
-    }
-
-};
-
-
-template<class T>
-std::shared_ptr<RequestHandler> make_handler()
-{
-    auto pt = new T;
-    return std::shared_ptr<RequestHandler>(pt);
-}
-
-
 int main()
 {
-    //auto func = Handler;
 
-    /*
-    std::map<std::string, Handler> H;
-    std::map<int, std::vector<int>> M;
+    std::map<std::string, std::shared_ptr<Utils::iHandler>> Handlers;
 
-    std::vector<int> aa;
-    Handler<RequestHandler> qq;
+    Handlers = {
+        {"/", Utils::make_handler<Main>() },
+        {"/web", Utils::make_handler<Html>() },
+        {"/hello", Utils::make_handler<Hello>() },
+        {"/index", Utils::make_handler<Index>() }
 
-    H.insert({"/", qq});
-*/
+    };
 
 
-    std::map<std::string, std::shared_ptr<RequestHandler>> H;
-    H["/"] = std::shared_ptr<RequestHandler>(new Main);
-    H["/web"] = std::shared_ptr<RequestHandler>(new Html);
-    H["/hello"] = std::shared_ptr<RequestHandler>(new Hello);
-    H["/index"] = std::shared_ptr<RequestHandler>(new Index);
 
-    HttpApplication app(H);
+    HttpApplication app(Handlers);
     HttpServer server(app);
     server.bind(8081);
 

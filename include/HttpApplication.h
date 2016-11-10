@@ -7,7 +7,7 @@
 #include "utils.h"
 
 class HttpApplication {
-typedef std::map<std::string, std::shared_ptr<RequestHandler>> MapHand;
+typedef std::map<std::string, std::shared_ptr<Utils::iHandler>> MapHand;
 
 public:
 	MapHand handlers;
