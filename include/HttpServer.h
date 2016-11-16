@@ -15,6 +15,12 @@ class HttpClient;
 
 class HttpServer {
 
+    struct Context{
+        HttpServer* server;
+        std::shared_ptr<Socket> client;
+    };
+
+
 friend class HttpClient;
 typedef std::map<int, std::string> HttpCodesMap;
 
@@ -27,7 +33,9 @@ private:
         int max_clients{ 0 };
 
         HttpResponse process_request(HttpRequest&);
+
         void setup_handler(std::shared_ptr<RequestHandler>, HttpRequest&);
+        static void* thread_func(void*);
 
 public:
 	HttpServer(HttpApplication app);

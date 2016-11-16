@@ -67,17 +67,6 @@ test/fast: test
 
 .PHONY : test/fast
 
-# Special rule for the target edit_cache
-edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
-.PHONY : edit_cache
-
-# Special rule for the target edit_cache
-edit_cache/fast: edit_cache
-
-.PHONY : edit_cache/fast
-
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
@@ -88,6 +77,17 @@ rebuild_cache:
 rebuild_cache/fast: rebuild_cache
 
 .PHONY : rebuild_cache/fast
+
+# Special rule for the target edit_cache
+edit_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+.PHONY : edit_cache
+
+# Special rule for the target edit_cache
+edit_cache/fast: edit_cache
+
+.PHONY : edit_cache/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -148,19 +148,6 @@ httpserver/fast:
 .PHONY : httpserver/fast
 
 #=============================================================================
-# Target rules for targets named proxy
-
-# Build rule for target.
-proxy: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 proxy
-.PHONY : proxy
-
-# fast build rule for target.
-proxy/fast:
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/build
-.PHONY : proxy/fast
-
-#=============================================================================
 # Target rules for targets named googletest
 
 # Build rule for target.
@@ -200,33 +187,6 @@ main.cpp.s:
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/main.cpp.s
 .PHONY : main.cpp.s
 
-proxy.o: proxy.cpp.o
-
-.PHONY : proxy.o
-
-# target to build an object file
-proxy.cpp.o:
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/proxy.cpp.o
-.PHONY : proxy.cpp.o
-
-proxy.i: proxy.cpp.i
-
-.PHONY : proxy.i
-
-# target to preprocess a source file
-proxy.cpp.i:
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/proxy.cpp.i
-.PHONY : proxy.cpp.i
-
-proxy.s: proxy.cpp.s
-
-.PHONY : proxy.s
-
-# target to generate assembly for a file
-proxy.cpp.s:
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/proxy.cpp.s
-.PHONY : proxy.cpp.s
-
 src/HttpApplication.o: src/HttpApplication.cpp.o
 
 .PHONY : src/HttpApplication.o
@@ -235,7 +195,6 @@ src/HttpApplication.o: src/HttpApplication.cpp.o
 src/HttpApplication.cpp.o:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpApplication.cpp.o
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpApplication.cpp.o
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpApplication.cpp.o
 .PHONY : src/HttpApplication.cpp.o
 
 src/HttpApplication.i: src/HttpApplication.cpp.i
@@ -246,7 +205,6 @@ src/HttpApplication.i: src/HttpApplication.cpp.i
 src/HttpApplication.cpp.i:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpApplication.cpp.i
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpApplication.cpp.i
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpApplication.cpp.i
 .PHONY : src/HttpApplication.cpp.i
 
 src/HttpApplication.s: src/HttpApplication.cpp.s
@@ -257,7 +215,6 @@ src/HttpApplication.s: src/HttpApplication.cpp.s
 src/HttpApplication.cpp.s:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpApplication.cpp.s
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpApplication.cpp.s
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpApplication.cpp.s
 .PHONY : src/HttpApplication.cpp.s
 
 src/HttpClient.o: src/HttpClient.cpp.o
@@ -268,7 +225,6 @@ src/HttpClient.o: src/HttpClient.cpp.o
 src/HttpClient.cpp.o:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.o
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpClient.cpp.o
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpClient.cpp.o
 .PHONY : src/HttpClient.cpp.o
 
 src/HttpClient.i: src/HttpClient.cpp.i
@@ -279,7 +235,6 @@ src/HttpClient.i: src/HttpClient.cpp.i
 src/HttpClient.cpp.i:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.i
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpClient.cpp.i
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpClient.cpp.i
 .PHONY : src/HttpClient.cpp.i
 
 src/HttpClient.s: src/HttpClient.cpp.s
@@ -290,7 +245,6 @@ src/HttpClient.s: src/HttpClient.cpp.s
 src/HttpClient.cpp.s:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.s
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpClient.cpp.s
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpClient.cpp.s
 .PHONY : src/HttpClient.cpp.s
 
 src/HttpMessage.o: src/HttpMessage.cpp.o
@@ -301,7 +255,6 @@ src/HttpMessage.o: src/HttpMessage.cpp.o
 src/HttpMessage.cpp.o:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpMessage.cpp.o
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpMessage.cpp.o
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpMessage.cpp.o
 .PHONY : src/HttpMessage.cpp.o
 
 src/HttpMessage.i: src/HttpMessage.cpp.i
@@ -312,7 +265,6 @@ src/HttpMessage.i: src/HttpMessage.cpp.i
 src/HttpMessage.cpp.i:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpMessage.cpp.i
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpMessage.cpp.i
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpMessage.cpp.i
 .PHONY : src/HttpMessage.cpp.i
 
 src/HttpMessage.s: src/HttpMessage.cpp.s
@@ -323,7 +275,6 @@ src/HttpMessage.s: src/HttpMessage.cpp.s
 src/HttpMessage.cpp.s:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpMessage.cpp.s
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpMessage.cpp.s
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpMessage.cpp.s
 .PHONY : src/HttpMessage.cpp.s
 
 src/HttpRequest.o: src/HttpRequest.cpp.o
@@ -334,7 +285,6 @@ src/HttpRequest.o: src/HttpRequest.cpp.o
 src/HttpRequest.cpp.o:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpRequest.cpp.o
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpRequest.cpp.o
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpRequest.cpp.o
 .PHONY : src/HttpRequest.cpp.o
 
 src/HttpRequest.i: src/HttpRequest.cpp.i
@@ -345,7 +295,6 @@ src/HttpRequest.i: src/HttpRequest.cpp.i
 src/HttpRequest.cpp.i:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpRequest.cpp.i
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpRequest.cpp.i
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpRequest.cpp.i
 .PHONY : src/HttpRequest.cpp.i
 
 src/HttpRequest.s: src/HttpRequest.cpp.s
@@ -356,7 +305,6 @@ src/HttpRequest.s: src/HttpRequest.cpp.s
 src/HttpRequest.cpp.s:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpRequest.cpp.s
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpRequest.cpp.s
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpRequest.cpp.s
 .PHONY : src/HttpRequest.cpp.s
 
 src/HttpResponse.o: src/HttpResponse.cpp.o
@@ -367,7 +315,6 @@ src/HttpResponse.o: src/HttpResponse.cpp.o
 src/HttpResponse.cpp.o:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpResponse.cpp.o
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpResponse.cpp.o
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpResponse.cpp.o
 .PHONY : src/HttpResponse.cpp.o
 
 src/HttpResponse.i: src/HttpResponse.cpp.i
@@ -378,7 +325,6 @@ src/HttpResponse.i: src/HttpResponse.cpp.i
 src/HttpResponse.cpp.i:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpResponse.cpp.i
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpResponse.cpp.i
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpResponse.cpp.i
 .PHONY : src/HttpResponse.cpp.i
 
 src/HttpResponse.s: src/HttpResponse.cpp.s
@@ -389,7 +335,6 @@ src/HttpResponse.s: src/HttpResponse.cpp.s
 src/HttpResponse.cpp.s:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpResponse.cpp.s
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpResponse.cpp.s
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpResponse.cpp.s
 .PHONY : src/HttpResponse.cpp.s
 
 src/HttpServer.o: src/HttpServer.cpp.o
@@ -400,7 +345,6 @@ src/HttpServer.o: src/HttpServer.cpp.o
 src/HttpServer.cpp.o:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpServer.cpp.o
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpServer.cpp.o
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpServer.cpp.o
 .PHONY : src/HttpServer.cpp.o
 
 src/HttpServer.i: src/HttpServer.cpp.i
@@ -411,7 +355,6 @@ src/HttpServer.i: src/HttpServer.cpp.i
 src/HttpServer.cpp.i:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpServer.cpp.i
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpServer.cpp.i
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpServer.cpp.i
 .PHONY : src/HttpServer.cpp.i
 
 src/HttpServer.s: src/HttpServer.cpp.s
@@ -422,7 +365,6 @@ src/HttpServer.s: src/HttpServer.cpp.s
 src/HttpServer.cpp.s:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/HttpServer.cpp.s
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/HttpServer.cpp.s
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/HttpServer.cpp.s
 .PHONY : src/HttpServer.cpp.s
 
 src/Logger.o: src/Logger.cpp.o
@@ -433,7 +375,6 @@ src/Logger.o: src/Logger.cpp.o
 src/Logger.cpp.o:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/Logger.cpp.o
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/Logger.cpp.o
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/Logger.cpp.o
 .PHONY : src/Logger.cpp.o
 
 src/Logger.i: src/Logger.cpp.i
@@ -444,7 +385,6 @@ src/Logger.i: src/Logger.cpp.i
 src/Logger.cpp.i:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/Logger.cpp.i
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/Logger.cpp.i
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/Logger.cpp.i
 .PHONY : src/Logger.cpp.i
 
 src/Logger.s: src/Logger.cpp.s
@@ -455,7 +395,6 @@ src/Logger.s: src/Logger.cpp.s
 src/Logger.cpp.s:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/Logger.cpp.s
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/Logger.cpp.s
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/Logger.cpp.s
 .PHONY : src/Logger.cpp.s
 
 src/RequestHandler.o: src/RequestHandler.cpp.o
@@ -466,7 +405,6 @@ src/RequestHandler.o: src/RequestHandler.cpp.o
 src/RequestHandler.cpp.o:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/RequestHandler.cpp.o
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/RequestHandler.cpp.o
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/RequestHandler.cpp.o
 .PHONY : src/RequestHandler.cpp.o
 
 src/RequestHandler.i: src/RequestHandler.cpp.i
@@ -477,7 +415,6 @@ src/RequestHandler.i: src/RequestHandler.cpp.i
 src/RequestHandler.cpp.i:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/RequestHandler.cpp.i
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/RequestHandler.cpp.i
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/RequestHandler.cpp.i
 .PHONY : src/RequestHandler.cpp.i
 
 src/RequestHandler.s: src/RequestHandler.cpp.s
@@ -488,7 +425,6 @@ src/RequestHandler.s: src/RequestHandler.cpp.s
 src/RequestHandler.cpp.s:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/RequestHandler.cpp.s
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/RequestHandler.cpp.s
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/RequestHandler.cpp.s
 .PHONY : src/RequestHandler.cpp.s
 
 src/socket.o: src/socket.cpp.o
@@ -499,7 +435,6 @@ src/socket.o: src/socket.cpp.o
 src/socket.cpp.o:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/socket.cpp.o
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/socket.cpp.o
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/socket.cpp.o
 .PHONY : src/socket.cpp.o
 
 src/socket.i: src/socket.cpp.i
@@ -510,7 +445,6 @@ src/socket.i: src/socket.cpp.i
 src/socket.cpp.i:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/socket.cpp.i
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/socket.cpp.i
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/socket.cpp.i
 .PHONY : src/socket.cpp.i
 
 src/socket.s: src/socket.cpp.s
@@ -521,7 +455,6 @@ src/socket.s: src/socket.cpp.s
 src/socket.cpp.s:
 	$(MAKE) -f CMakeFiles/httpserver_test.dir/build.make CMakeFiles/httpserver_test.dir/src/socket.cpp.s
 	$(MAKE) -f CMakeFiles/httpserver.dir/build.make CMakeFiles/httpserver.dir/src/socket.cpp.s
-	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/src/socket.cpp.s
 .PHONY : src/socket.cpp.s
 
 test/httpclienttest.o: test/httpclienttest.cpp.o
@@ -612,18 +545,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... test"
-	@echo "... edit_cache"
 	@echo "... httpserver_test"
 	@echo "... httpserver"
-	@echo "... proxy"
 	@echo "... rebuild_cache"
+	@echo "... edit_cache"
 	@echo "... googletest"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... proxy.o"
-	@echo "... proxy.i"
-	@echo "... proxy.s"
 	@echo "... src/HttpApplication.o"
 	@echo "... src/HttpApplication.i"
 	@echo "... src/HttpApplication.s"

@@ -57,8 +57,8 @@ namespace Utils {
         }
         if(clen > 0)
            data += client.recv(clen).second;
-
-        return std::shared_ptr<HttpMessage>(new T(data, client.get_remote_ip(), client.get_remote_port()));
+        auto ip = client.get_remote_ip();
+        return std::make_shared<T>(data, ip, client.get_remote_port());
     }
 
     const std::vector<std::string> HttpMethods = {"GET", "POST"};

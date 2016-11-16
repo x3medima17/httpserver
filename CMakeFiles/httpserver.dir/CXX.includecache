@@ -133,6 +133,12 @@ sys/time.h
 -
 cassert
 -
+pthread.h
+-
+thread
+-
+chrono
+-
 
 /home/dumitru/httpserver/src/Logger.cpp
 Logger.h

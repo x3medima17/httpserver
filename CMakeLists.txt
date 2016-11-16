@@ -5,7 +5,7 @@ project(${PROJECT_NAME_STR} C CXX)
 find_package(Threads REQUIRED)
 
 if(CMAKE_COMPILER_IS_GNUCXX)
-    add_definitions(-Wall -ansi -Wno-deprecated -pthread -std=c++14)
+    add_definitions(-Wall -ansi -Wno-deprecated -lpthread -std=c++14)
 endif()
 
 if(MSVC)
@@ -34,7 +34,7 @@ add_subdirectory(${EXT_PROJECTS_DIR}/gtest)
 #-------------------
 add_definitions(${MSVC_COMPILER_DEFS})
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g")
-
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread")
 enable_testing()
 set(PROJECT_TEST_NAME ${PROJECT_NAME_STR}_test)
 include_directories(${GTEST_INCLUDE_DIRS} ${COMMON_INCLUDES})
@@ -63,9 +63,10 @@ endif()
 
 target_link_libraries(${PROJECT_TEST_NAME} ${CMAKE_THREAD_LIBS_INIT})
 
+
 add_test(test1 ${PROJECT_TEST_NAME})
 
 include_directories ("include")
 
 add_executable (httpserver ${SOURCES} main.cpp)
-add_executable (proxy ${SOURCES} proxy.cpp)
+#add_executable (proxy ${SOURCES} proxy.cpp)

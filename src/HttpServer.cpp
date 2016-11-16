@@ -11,6 +11,18 @@
 #include <sys/time.h> //FD_SETSET, FD_ZERO macros
 #include <cassert>
 
+#include<pthread.h>
+
+
+#include <thread>
+#include <chrono>
+
+pthread_mutex_t lock;
+
+struct Context{
+    HttpServer* server;
+    std::shared_ptr<Socket> client;
+};
 
 HttpServer::HttpCodesMap HttpServer::StatusCodes = {
     {200, "OK"},
@@ -46,14 +58,30 @@ void HttpServer::setup_handler(std::shared_ptr<RequestHandler> handler, HttpRequ
 {
     handler->initialize();
 
-
     req.remote_ip = sock->get_remote_ip();
     req.remote_port = sock->get_remote_port();
 
     handler->request = req;
+}
+
+void* HttpServer::thread_func(void* data)
+{
+    pthread_detach(pthread_self());
+    Context* args= static_cast<Context*>(data);
+
+    HttpServer* server = args->server;
+    std::shared_ptr<Socket> client = args->client;
+
+    auto req = Utils::get_http_message<HttpRequest>(*client);
+    std::shared_ptr<HttpRequest> pt = std::dynamic_pointer_cast<HttpRequest>(req);
+    //log<<Utils::HttpMethods.at(pt->get_method())<<" "<<pt->get_uri()<<"\n";
+    auto response = server->process_request(*pt);
+    client->send(response.__to_string());
 
 
-
+    delete args;
+    pthread_exit(NULL);
+    return 0;
 }
 
 HttpResponse HttpServer::process_request(HttpRequest& req)
@@ -98,10 +126,12 @@ HttpResponse HttpServer::process_request(HttpRequest& req)
 
 }
 
+
 void HttpServer::start()
 {
     fd_set readfds;
     std::vector<std::shared_ptr<Socket>> clients(max_clients);
+    std::vector<pthread_t> threads(max_clients);
 
     Logger log;
     while(1)
@@ -113,8 +143,10 @@ void HttpServer::start()
 
         for(const auto& item : clients)
         {
+
             if(item == nullptr)
                 continue;
+
             int fd = item->get_fd();
             if(fd > 0)
                 FD_SET(fd, &readfds);
@@ -134,42 +166,50 @@ void HttpServer::start()
             auto ptr = sock->accept();
             bool found = false;
             for(auto& item : clients)
+            {
+
+                pthread_mutex_lock(&lock);
                 if(item == nullptr)
                 {
                     found = true;
                     item = ptr;
+                    pthread_mutex_unlock(&lock);
                     break;
                 }
-            assert(found);
+                else
+                    pthread_mutex_unlock(&lock);
+            }
+//            if(!found)
+//                throw std::runtime_error("ERROR No space left");
+
             log<<"Established connection with "<<sock->get_remote_ip()<<" on port "<<sock->get_remote_port()<<"\n";
             log.flush();
 
         }
 
         //Check clients for new events
+        int i = -1;
         for(auto& client : clients)
         {
+            i++;
+
             if(client == nullptr)
                 continue;
+
+
             if(FD_ISSET(client->get_fd(), &readfds))
             {
-                auto req = Utils::get_http_message<HttpRequest>(*client);
-                std::shared_ptr<HttpRequest> pt = std::dynamic_pointer_cast<HttpRequest>(req);
-                log<<Utils::HttpMethods.at(pt->get_method())<<" "<<pt->get_uri()<<"\n";
-
-                auto response = process_request(*pt);
-
-                client->send(response.__to_string());
-                //client->close();
+                Context* args = new Context;
+                args->server = this;
+                args->client = client;
 
                 client = nullptr;
 
-                log<<"Connection closed\n";
-                log.flush();
+                int rc = pthread_create(&threads[i], NULL, thread_func, (void*)args);
+
+                assert(rc == 0);
             }
         }
-
-        continue;
 
 	}
 }
