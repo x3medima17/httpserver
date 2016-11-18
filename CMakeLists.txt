@@ -33,7 +33,7 @@ add_subdirectory(${EXT_PROJECTS_DIR}/gtest)
 # Test
 #-------------------
 add_definitions(${MSVC_COMPILER_DEFS})
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -O2")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g")
 set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pthread")
 enable_testing()
 set(PROJECT_TEST_NAME ${PROJECT_NAME_STR}_test)
