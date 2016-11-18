@@ -47,7 +47,7 @@ namespace Utils {
                 if(tmp.first < 2)
                     break;
             } while(data.substr(data.size()-4) != "\r\n\r\n" && tmp.first == 1024 );
-        assert(data.substr(data.size() - 4) == "\r\n\r\n" || tmp.first != 1024);
+        //assert(data.substr(data.size() - 4) == "\r\n\r\n" || tmp.first != 1024);
         // Check for content
         int clen = 0;
         int to_read = 0;
