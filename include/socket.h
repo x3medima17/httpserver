@@ -40,6 +40,8 @@ public:
 
 	void close();
 	
-	~Socket();
-	Socket operator=(const Socket&);
+        ~Socket();
+
+        Socket(const Socket&) = delete;
+        Socket& operator=(const Socket&) = delete;
 };

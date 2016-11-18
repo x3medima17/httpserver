@@ -265,6 +265,10 @@ HttpRequest.h
 include/HttpRequest.h
 HttpMessage.h
 include/HttpMessage.h
+Logger.h
+include/Logger.h
+pthread.h
+-
 
 include/Logger.h
 string
@@ -312,6 +316,10 @@ memory
 vector
 -
 map
+-
+iostream
+-
+cassert
 -
 socket.h
 include/socket.h

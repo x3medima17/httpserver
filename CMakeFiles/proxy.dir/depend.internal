@@ -30,6 +30,7 @@ CMakeFiles/proxy.dir/src/HttpClient.cpp.o
  include/HttpRequest.h
  include/HttpResponse.h
  include/HttpServer.h
+ include/Logger.h
  include/RequestHandler.h
  include/socket.h
  include/utils.h
@@ -52,6 +53,7 @@ CMakeFiles/proxy.dir/src/HttpResponse.cpp.o
  include/HttpRequest.h
  include/HttpResponse.h
  include/HttpServer.h
+ include/Logger.h
  include/RequestHandler.h
  include/socket.h
  include/utils.h

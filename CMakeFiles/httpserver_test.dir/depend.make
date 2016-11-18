@@ -17,6 +17,7 @@ CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.o: include/HttpMessage.h
 CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.o: include/HttpRequest.h
 CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.o: include/HttpResponse.h
 CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.o: include/HttpServer.h
+CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.o: include/Logger.h
 CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.o: include/RequestHandler.h
 CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.o: include/socket.h
 CMakeFiles/httpserver_test.dir/src/HttpClient.cpp.o: include/utils.h
@@ -39,6 +40,7 @@ CMakeFiles/httpserver_test.dir/src/HttpResponse.cpp.o: include/HttpMessage.h
 CMakeFiles/httpserver_test.dir/src/HttpResponse.cpp.o: include/HttpRequest.h
 CMakeFiles/httpserver_test.dir/src/HttpResponse.cpp.o: include/HttpResponse.h
 CMakeFiles/httpserver_test.dir/src/HttpResponse.cpp.o: include/HttpServer.h
+CMakeFiles/httpserver_test.dir/src/HttpResponse.cpp.o: include/Logger.h
 CMakeFiles/httpserver_test.dir/src/HttpResponse.cpp.o: include/RequestHandler.h
 CMakeFiles/httpserver_test.dir/src/HttpResponse.cpp.o: include/socket.h
 CMakeFiles/httpserver_test.dir/src/HttpResponse.cpp.o: include/utils.h

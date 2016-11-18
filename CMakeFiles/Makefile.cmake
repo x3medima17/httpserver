@@ -56,5 +56,6 @@ set(CMAKE_MAKEFILE_PRODUCTS
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/httpserver_test.dir/DependInfo.cmake"
   "CMakeFiles/httpserver.dir/DependInfo.cmake"
+  "CMakeFiles/proxy.dir/DependInfo.cmake"
   "ext/gtest/CMakeFiles/googletest.dir/DependInfo.cmake"
   )

@@ -3,7 +3,8 @@
 #include <memory>
 #include <vector>
 #include <map>
-
+#include <iostream>
+#include <cassert>
 #include "socket.h"
 
 class HttpMessage;
@@ -36,28 +37,32 @@ namespace Utils {
     template<class T>
     std::shared_ptr<HttpMessage> get_http_message(Socket &client)
     {
+
             std::string data("");
             std::pair<int,std::string> tmp;
             do
             {
-                tmp = client.recv(128);
+                tmp = client.recv(1024);
                 data += tmp.second;
-            if(tmp.first < 2)
-                break;
-        } while(data.substr(data.size()-4,4) != "\r\n\r\n" && tmp.first == 128 );
-
+                if(tmp.first < 2)
+                    break;
+            } while(data.substr(data.size()-4) != "\r\n\r\n" && tmp.first == 1024 );
+        assert(data.substr(data.size() - 4) == "\r\n\r\n" || tmp.first != 1024);
         // Check for content
         int clen = 0;
+        int to_read = 0;
         if(data.find("Content-Length: ") != std::string::npos)
         {
                 int p = data.find("Content-Length:");
                 int l = data.find(" ",p);
                 int r = data.find("\r\n",p);
                 clen = std::stoi( data.substr(l+1, r-l) );
+                to_read = clen - (data.length() - r);
         }
-        if(clen > 0)
+        if(to_read > 0)
            data += client.recv(clen).second;
-        auto ip = client.get_remote_ip();
+        auto ip = "";//client.get_remote_ip();
+
         return std::make_shared<T>(data, ip, client.get_remote_port());
     }
 

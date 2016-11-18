@@ -50,6 +50,9 @@ HttpClient::HttpClient(std::string raw) : HttpClient()
 
 void HttpClient::fetch()
 {
+    int Q = 0;
+    std::cout<<++Q<<std::endl;
+
     Socket sock(host,port);
     HttpRequest req(method, URI);
     req.set_host(host);
@@ -57,12 +60,23 @@ void HttpClient::fetch()
     for(auto& header: Headers)
         req.add_header(header.first, header.second);
 
+    std::cout<<++Q<<std::endl;
+
     sock.connect();
     sock.send(req.__to_string());
+
+    std::cout<<++Q<<std::endl;
+
     auto tmp = Utils::get_http_message<HttpResponse>(sock);
     std::shared_ptr<HttpResponse> pt = std::dynamic_pointer_cast<HttpResponse>(tmp);
     response = *pt;
+
+    std::cout<<++Q<<std::endl;
+
     sock.close();
+
+    std::cout<<++Q<<std::endl;
+
 }
 
 int HttpClient::get_status() const { return status; }

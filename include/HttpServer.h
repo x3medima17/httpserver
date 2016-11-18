@@ -10,6 +10,9 @@
 #include "HttpApplication.h"
 #include "HttpRequest.h"
 #include "HttpMessage.h"
+#include "Logger.h"
+
+#include <pthread.h>
 
 class HttpClient;
 
@@ -17,7 +20,13 @@ class HttpServer {
 
     struct Context{
         HttpServer* server;
-        std::shared_ptr<Socket> client;
+        size_t tid;
+        fd_set* readfds;
+        Context(HttpServer* server, size_t tid, fd_set* readfds):
+            server(server),
+            tid(tid),
+            readfds(readfds)
+        {}
     };
 
 
@@ -30,7 +39,8 @@ typedef std::map<int, std::string> HttpCodesMap;
 private:
 	HttpApplication app;
 	std::unique_ptr<Socket> sock;
-        int max_clients{ 0 };
+        size_t max_clients{ 0 };
+        size_t request_no { 0 };
 
         HttpResponse process_request(HttpRequest&);
 
@@ -47,7 +57,15 @@ public:
 
 
         static  std::map<int, std::string> StatusCodes;
+        Logger log { "proxy.log.old" };
+        pthread_mutex_t lock;
+        std::vector<std::shared_ptr<Socket>> clients;
 
+
+
+        //Deleted
+        HttpServer(const HttpServer&) = delete;
+        HttpServer& operator=(const HttpServer&) = delete;
 
 
 };

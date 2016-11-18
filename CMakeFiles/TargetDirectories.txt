@@ -1,8 +1,9 @@
 /home/dumitru/httpserver/CMakeFiles/test.dir
+/home/dumitru/httpserver/CMakeFiles/edit_cache.dir
 /home/dumitru/httpserver/CMakeFiles/httpserver_test.dir
 /home/dumitru/httpserver/CMakeFiles/httpserver.dir
+/home/dumitru/httpserver/CMakeFiles/proxy.dir
 /home/dumitru/httpserver/CMakeFiles/rebuild_cache.dir
-/home/dumitru/httpserver/CMakeFiles/edit_cache.dir
 /home/dumitru/httpserver/ext/gtest/CMakeFiles/edit_cache.dir
 /home/dumitru/httpserver/ext/gtest/CMakeFiles/rebuild_cache.dir
 /home/dumitru/httpserver/ext/gtest/CMakeFiles/test.dir

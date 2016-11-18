@@ -134,6 +134,43 @@ clean: CMakeFiles/httpserver.dir/clean
 .PHONY : clean
 
 #=============================================================================
+# Target rules for target CMakeFiles/proxy.dir
+
+# All Build rule for target.
+CMakeFiles/proxy.dir/all:
+	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/depend
+	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/dumitru/httpserver/CMakeFiles --progress-num=33,34,35,36,37,38,39,40,41,42,43 "Built target proxy"
+.PHONY : CMakeFiles/proxy.dir/all
+
+# Include target in all.
+all: CMakeFiles/proxy.dir/all
+
+.PHONY : all
+
+# Build rule for subdir invocation for target.
+CMakeFiles/proxy.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dumitru/httpserver/CMakeFiles 11
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/proxy.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/dumitru/httpserver/CMakeFiles 0
+.PHONY : CMakeFiles/proxy.dir/rule
+
+# Convenience name for target.
+proxy: CMakeFiles/proxy.dir/rule
+
+.PHONY : proxy
+
+# clean rule for target.
+CMakeFiles/proxy.dir/clean:
+	$(MAKE) -f CMakeFiles/proxy.dir/build.make CMakeFiles/proxy.dir/clean
+.PHONY : CMakeFiles/proxy.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/proxy.dir/clean
+
+.PHONY : clean
+
+#=============================================================================
 # Directory level rules for directory ext/gtest
 
 # Convenience name for "all" pass in the directory.

@@ -1,0 +1,911 @@
+desc: (none)
+cmd: ./proxy
+time_unit: i
+#-----------
+snapshot=0
+#-----------
+time=0
+mem_heap_B=0
+mem_heap_extra_B=0
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=1
+#-----------
+time=2603938
+mem_heap_B=140561
+mem_heap_extra_B=399
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=2
+#-----------
+time=1696181697
+mem_heap_B=140625
+mem_heap_extra_B=407
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=3
+#-----------
+time=1696181777
+mem_heap_B=140649
+mem_heap_extra_B=423
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=4
+#-----------
+time=1893250019
+mem_heap_B=140678
+mem_heap_extra_B=434
+mem_stacks_B=0
+heap_tree=detailed
+n5: 140678 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40104E8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40105F9: _dl_init (dl-init.c:30)
+    n0: 72704 0x4000CF8: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+ n1: 40040 0x43D30A: __gnu_cxx::new_allocator<pthread_mutex_t>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 40040 0x43C540: std::allocator_traits<std::allocator<pthread_mutex_t> >::allocate(std::allocator<pthread_mutex_t>&, unsigned long) (alloc_traits.h:491)
+   n1: 40040 0x43AE16: std::_Vector_base<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 40040 0x439849: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 40040 0x4382DF: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::resize(unsigned long) (stl_vector.h:676)
+      n1: 40040 0x435719: HttpServer::listen(int) (HttpServer.cpp:60)
+       n0: 40040 0x44A229: main (proxy.cpp:72)
+ n1: 16016 0x43D1D6: __gnu_cxx::new_allocator<std::shared_ptr<Socket> >::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 16016 0x43C452: std::allocator_traits<std::allocator<std::shared_ptr<Socket> > >::allocate(std::allocator<std::shared_ptr<Socket> >&, unsigned long) (alloc_traits.h:491)
+   n1: 16016 0x43AC6A: std::_Vector_base<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 16016 0x4395EC: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 16016 0x438253: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::resize(unsigned long) (stl_vector.h:676)
+      n1: 16016 0x435704: HttpServer::listen(int) (HttpServer.cpp:59)
+       n0: 16016 0x44A229: main (proxy.cpp:72)
+ n1: 8008 0x43E062: __gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 8008 0x43D64D: std::allocator_traits<std::allocator<unsigned long> >::allocate(std::allocator<unsigned long>&, unsigned long) (alloc_traits.h:491)
+   n1: 8008 0x43C9F8: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 8008 0x43B809: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_create_storage(unsigned long) (stl_vector.h:185)
+     n1: 8008 0x43A365: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_Vector_base(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:136)
+      n1: 8008 0x438CAA: std::vector<unsigned long, std::allocator<unsigned long> >::vector(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:278)
+       n1: 8008 0x43633E: HttpServer::start() (HttpServer.cpp:217)
+        n0: 8008 0x44A254: main (proxy.cpp:74)
+ n0: 3910 in 15 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=5
+#-----------
+time=1893254432
+mem_heap_B=140710
+mem_heap_extra_B=434
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=6
+#-----------
+time=1984053263
+mem_heap_B=140838
+mem_heap_extra_B=442
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=7
+#-----------
+time=1985506726
+mem_heap_B=141986
+mem_heap_extra_B=654
+mem_stacks_B=0
+heap_tree=peak
+n5: 141986 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40104E8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40105F9: _dl_init (dl-init.c:30)
+    n0: 72704 0x4000CF8: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+ n1: 40040 0x43D30A: __gnu_cxx::new_allocator<pthread_mutex_t>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 40040 0x43C540: std::allocator_traits<std::allocator<pthread_mutex_t> >::allocate(std::allocator<pthread_mutex_t>&, unsigned long) (alloc_traits.h:491)
+   n1: 40040 0x43AE16: std::_Vector_base<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 40040 0x439849: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 40040 0x4382DF: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::resize(unsigned long) (stl_vector.h:676)
+      n1: 40040 0x435719: HttpServer::listen(int) (HttpServer.cpp:60)
+       n0: 40040 0x44A229: main (proxy.cpp:72)
+ n1: 16016 0x43D1D6: __gnu_cxx::new_allocator<std::shared_ptr<Socket> >::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 16016 0x43C452: std::allocator_traits<std::allocator<std::shared_ptr<Socket> > >::allocate(std::allocator<std::shared_ptr<Socket> >&, unsigned long) (alloc_traits.h:491)
+   n1: 16016 0x43AC6A: std::_Vector_base<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 16016 0x4395EC: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 16016 0x438253: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::resize(unsigned long) (stl_vector.h:676)
+      n1: 16016 0x435704: HttpServer::listen(int) (HttpServer.cpp:59)
+       n0: 16016 0x44A229: main (proxy.cpp:72)
+ n1: 8008 0x43E062: __gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 8008 0x43D64D: std::allocator_traits<std::allocator<unsigned long> >::allocate(std::allocator<unsigned long>&, unsigned long) (alloc_traits.h:491)
+   n1: 8008 0x43C9F8: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 8008 0x43B809: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_create_storage(unsigned long) (stl_vector.h:185)
+     n1: 8008 0x43A365: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_Vector_base(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:136)
+      n1: 8008 0x438CAA: std::vector<unsigned long, std::allocator<unsigned long> >::vector(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:278)
+       n1: 8008 0x43633E: HttpServer::start() (HttpServer.cpp:217)
+        n0: 8008 0x44A254: main (proxy.cpp:74)
+ n0: 5218 in 20 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=8
+#-----------
+time=2003862205
+mem_heap_B=141627
+mem_heap_extra_B=525
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=9
+#-----------
+time=2030607823
+mem_heap_B=141563
+mem_heap_extra_B=517
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=10
+#-----------
+time=2030609949
+mem_heap_B=140622
+mem_heap_extra_B=410
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=11
+#-----------
+time=5614343931
+mem_heap_B=140686
+mem_heap_extra_B=418
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=12
+#-----------
+time=5624069058
+mem_heap_B=140622
+mem_heap_extra_B=410
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=13
+#-----------
+time=7235849836
+mem_heap_B=140686
+mem_heap_extra_B=418
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=14
+#-----------
+time=7243815366
+mem_heap_B=140838
+mem_heap_extra_B=442
+mem_stacks_B=0
+heap_tree=detailed
+n5: 140838 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40104E8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40105F9: _dl_init (dl-init.c:30)
+    n0: 72704 0x4000CF8: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+ n1: 40040 0x43D30A: __gnu_cxx::new_allocator<pthread_mutex_t>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 40040 0x43C540: std::allocator_traits<std::allocator<pthread_mutex_t> >::allocate(std::allocator<pthread_mutex_t>&, unsigned long) (alloc_traits.h:491)
+   n1: 40040 0x43AE16: std::_Vector_base<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 40040 0x439849: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 40040 0x4382DF: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::resize(unsigned long) (stl_vector.h:676)
+      n1: 40040 0x435719: HttpServer::listen(int) (HttpServer.cpp:60)
+       n0: 40040 0x44A229: main (proxy.cpp:72)
+ n1: 16016 0x43D1D6: __gnu_cxx::new_allocator<std::shared_ptr<Socket> >::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 16016 0x43C452: std::allocator_traits<std::allocator<std::shared_ptr<Socket> > >::allocate(std::allocator<std::shared_ptr<Socket> >&, unsigned long) (alloc_traits.h:491)
+   n1: 16016 0x43AC6A: std::_Vector_base<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 16016 0x4395EC: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 16016 0x438253: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::resize(unsigned long) (stl_vector.h:676)
+      n1: 16016 0x435704: HttpServer::listen(int) (HttpServer.cpp:59)
+       n0: 16016 0x44A229: main (proxy.cpp:72)
+ n1: 8008 0x43E062: __gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 8008 0x43D64D: std::allocator_traits<std::allocator<unsigned long> >::allocate(std::allocator<unsigned long>&, unsigned long) (alloc_traits.h:491)
+   n1: 8008 0x43C9F8: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 8008 0x43B809: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_create_storage(unsigned long) (stl_vector.h:185)
+     n1: 8008 0x43A365: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_Vector_base(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:136)
+      n1: 8008 0x438CAA: std::vector<unsigned long, std::allocator<unsigned long> >::vector(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:278)
+       n1: 8008 0x43633E: HttpServer::start() (HttpServer.cpp:217)
+        n0: 8008 0x44A254: main (proxy.cpp:74)
+ n0: 4070 in 23 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=15
+#-----------
+time=7262114146
+mem_heap_B=140959
+mem_heap_extra_B=457
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=16
+#-----------
+time=7262189964
+mem_heap_B=140622
+mem_heap_extra_B=410
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=17
+#-----------
+time=7892929990
+mem_heap_B=140686
+mem_heap_extra_B=418
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=18
+#-----------
+time=7892932898
+mem_heap_B=140710
+mem_heap_extra_B=434
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=19
+#-----------
+time=8289475011
+mem_heap_B=140838
+mem_heap_extra_B=442
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=20
+#-----------
+time=8334515263
+mem_heap_B=140959
+mem_heap_extra_B=457
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=21
+#-----------
+time=8348665994
+mem_heap_B=140622
+mem_heap_extra_B=410
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=22
+#-----------
+time=8917402877
+mem_heap_B=140686
+mem_heap_extra_B=418
+mem_stacks_B=0
+heap_tree=detailed
+n5: 140686 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40104E8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40105F9: _dl_init (dl-init.c:30)
+    n0: 72704 0x4000CF8: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+ n1: 40040 0x43D30A: __gnu_cxx::new_allocator<pthread_mutex_t>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 40040 0x43C540: std::allocator_traits<std::allocator<pthread_mutex_t> >::allocate(std::allocator<pthread_mutex_t>&, unsigned long) (alloc_traits.h:491)
+   n1: 40040 0x43AE16: std::_Vector_base<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 40040 0x439849: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 40040 0x4382DF: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::resize(unsigned long) (stl_vector.h:676)
+      n1: 40040 0x435719: HttpServer::listen(int) (HttpServer.cpp:60)
+       n0: 40040 0x44A229: main (proxy.cpp:72)
+ n1: 16016 0x43D1D6: __gnu_cxx::new_allocator<std::shared_ptr<Socket> >::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 16016 0x43C452: std::allocator_traits<std::allocator<std::shared_ptr<Socket> > >::allocate(std::allocator<std::shared_ptr<Socket> >&, unsigned long) (alloc_traits.h:491)
+   n1: 16016 0x43AC6A: std::_Vector_base<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 16016 0x4395EC: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 16016 0x438253: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::resize(unsigned long) (stl_vector.h:676)
+      n1: 16016 0x435704: HttpServer::listen(int) (HttpServer.cpp:59)
+       n0: 16016 0x44A229: main (proxy.cpp:72)
+ n1: 8008 0x43E062: __gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 8008 0x43D64D: std::allocator_traits<std::allocator<unsigned long> >::allocate(std::allocator<unsigned long>&, unsigned long) (alloc_traits.h:491)
+   n1: 8008 0x43C9F8: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 8008 0x43B809: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_create_storage(unsigned long) (stl_vector.h:185)
+     n1: 8008 0x43A365: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_Vector_base(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:136)
+      n1: 8008 0x438CAA: std::vector<unsigned long, std::allocator<unsigned long> >::vector(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:278)
+       n1: 8008 0x43633E: HttpServer::start() (HttpServer.cpp:217)
+        n0: 8008 0x44A254: main (proxy.cpp:74)
+ n0: 3918 in 23 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=23
+#-----------
+time=8917402957
+mem_heap_B=140710
+mem_heap_extra_B=434
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=24
+#-----------
+time=8951185388
+mem_heap_B=140739
+mem_heap_extra_B=445
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=25
+#-----------
+time=8951220440
+mem_heap_B=140838
+mem_heap_extra_B=442
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=26
+#-----------
+time=9259468769
+mem_heap_B=140959
+mem_heap_extra_B=457
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=27
+#-----------
+time=9259543935
+mem_heap_B=140622
+mem_heap_extra_B=410
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=28
+#-----------
+time=13758180719
+mem_heap_B=140686
+mem_heap_extra_B=418
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=29
+#-----------
+time=13771098716
+mem_heap_B=141531
+mem_heap_extra_B=517
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=30
+#-----------
+time=13787990465
+mem_heap_B=141947
+mem_heap_extra_B=525
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=31
+#-----------
+time=13790825889
+mem_heap_B=140622
+mem_heap_extra_B=410
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=32
+#-----------
+time=13865567019
+mem_heap_B=140686
+mem_heap_extra_B=418
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=33
+#-----------
+time=13865567099
+mem_heap_B=140710
+mem_heap_extra_B=434
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=34
+#-----------
+time=13900755130
+mem_heap_B=140739
+mem_heap_extra_B=445
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=35
+#-----------
+time=13900755267
+mem_heap_B=140710
+mem_heap_extra_B=434
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=36
+#-----------
+time=13926143192
+mem_heap_B=140838
+mem_heap_extra_B=442
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=37
+#-----------
+time=13930443368
+mem_heap_B=140622
+mem_heap_extra_B=410
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=38
+#-----------
+time=13950286220
+mem_heap_B=140686
+mem_heap_extra_B=418
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=39
+#-----------
+time=13967178479
+mem_heap_B=140739
+mem_heap_extra_B=445
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=40
+#-----------
+time=13975981298
+mem_heap_B=141531
+mem_heap_extra_B=517
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=41
+#-----------
+time=13995688029
+mem_heap_B=141947
+mem_heap_extra_B=525
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=42
+#-----------
+time=14008560949
+mem_heap_B=140710
+mem_heap_extra_B=434
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=43
+#-----------
+time=14018419135
+mem_heap_B=140710
+mem_heap_extra_B=434
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=44
+#-----------
+time=14045573392
+mem_heap_B=140838
+mem_heap_extra_B=442
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=45
+#-----------
+time=14058315559
+mem_heap_B=140622
+mem_heap_extra_B=410
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=46
+#-----------
+time=14106328787
+mem_heap_B=140686
+mem_heap_extra_B=418
+mem_stacks_B=0
+heap_tree=detailed
+n5: 140686 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40104E8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40105F9: _dl_init (dl-init.c:30)
+    n0: 72704 0x4000CF8: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+ n1: 40040 0x43D30A: __gnu_cxx::new_allocator<pthread_mutex_t>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 40040 0x43C540: std::allocator_traits<std::allocator<pthread_mutex_t> >::allocate(std::allocator<pthread_mutex_t>&, unsigned long) (alloc_traits.h:491)
+   n1: 40040 0x43AE16: std::_Vector_base<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 40040 0x439849: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 40040 0x4382DF: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::resize(unsigned long) (stl_vector.h:676)
+      n1: 40040 0x435719: HttpServer::listen(int) (HttpServer.cpp:60)
+       n0: 40040 0x44A229: main (proxy.cpp:72)
+ n1: 16016 0x43D1D6: __gnu_cxx::new_allocator<std::shared_ptr<Socket> >::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 16016 0x43C452: std::allocator_traits<std::allocator<std::shared_ptr<Socket> > >::allocate(std::allocator<std::shared_ptr<Socket> >&, unsigned long) (alloc_traits.h:491)
+   n1: 16016 0x43AC6A: std::_Vector_base<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 16016 0x4395EC: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 16016 0x438253: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::resize(unsigned long) (stl_vector.h:676)
+      n1: 16016 0x435704: HttpServer::listen(int) (HttpServer.cpp:59)
+       n0: 16016 0x44A229: main (proxy.cpp:72)
+ n1: 8008 0x43E062: __gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 8008 0x43D64D: std::allocator_traits<std::allocator<unsigned long> >::allocate(std::allocator<unsigned long>&, unsigned long) (alloc_traits.h:491)
+   n1: 8008 0x43C9F8: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 8008 0x43B809: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_create_storage(unsigned long) (stl_vector.h:185)
+     n1: 8008 0x43A365: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_Vector_base(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:136)
+      n1: 8008 0x438CAA: std::vector<unsigned long, std::allocator<unsigned long> >::vector(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:278)
+       n1: 8008 0x43633E: HttpServer::start() (HttpServer.cpp:217)
+        n0: 8008 0x44A254: main (proxy.cpp:74)
+ n0: 3918 in 23 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=47
+#-----------
+time=14107740049
+mem_heap_B=140710
+mem_heap_extra_B=434
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=48
+#-----------
+time=14214283547
+mem_heap_B=140838
+mem_heap_extra_B=442
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=49
+#-----------
+time=14227005443
+mem_heap_B=141947
+mem_heap_extra_B=525
+mem_stacks_B=0
+heap_tree=detailed
+n5: 141947 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40104E8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40105F9: _dl_init (dl-init.c:30)
+    n0: 72704 0x4000CF8: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+ n1: 40040 0x43D30A: __gnu_cxx::new_allocator<pthread_mutex_t>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 40040 0x43C540: std::allocator_traits<std::allocator<pthread_mutex_t> >::allocate(std::allocator<pthread_mutex_t>&, unsigned long) (alloc_traits.h:491)
+   n1: 40040 0x43AE16: std::_Vector_base<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 40040 0x439849: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 40040 0x4382DF: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::resize(unsigned long) (stl_vector.h:676)
+      n1: 40040 0x435719: HttpServer::listen(int) (HttpServer.cpp:60)
+       n0: 40040 0x44A229: main (proxy.cpp:72)
+ n1: 16016 0x43D1D6: __gnu_cxx::new_allocator<std::shared_ptr<Socket> >::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 16016 0x43C452: std::allocator_traits<std::allocator<std::shared_ptr<Socket> > >::allocate(std::allocator<std::shared_ptr<Socket> >&, unsigned long) (alloc_traits.h:491)
+   n1: 16016 0x43AC6A: std::_Vector_base<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 16016 0x4395EC: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 16016 0x438253: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::resize(unsigned long) (stl_vector.h:676)
+      n1: 16016 0x435704: HttpServer::listen(int) (HttpServer.cpp:59)
+       n0: 16016 0x44A229: main (proxy.cpp:72)
+ n1: 8008 0x43E062: __gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 8008 0x43D64D: std::allocator_traits<std::allocator<unsigned long> >::allocate(std::allocator<unsigned long>&, unsigned long) (alloc_traits.h:491)
+   n1: 8008 0x43C9F8: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 8008 0x43B809: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_create_storage(unsigned long) (stl_vector.h:185)
+     n1: 8008 0x43A365: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_Vector_base(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:136)
+      n1: 8008 0x438CAA: std::vector<unsigned long, std::allocator<unsigned long> >::vector(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:278)
+       n1: 8008 0x43633E: HttpServer::start() (HttpServer.cpp:217)
+        n0: 8008 0x44A254: main (proxy.cpp:74)
+ n0: 5179 in 23 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=50
+#-----------
+time=14227006604
+mem_heap_B=141971
+mem_heap_extra_B=541
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=51
+#-----------
+time=14227009316
+mem_heap_B=142067
+mem_heap_extra_B=549
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=52
+#-----------
+time=14227010048
+mem_heap_B=142163
+mem_heap_extra_B=557
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=53
+#-----------
+time=14227010524
+mem_heap_B=142204
+mem_heap_extra_B=588
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=54
+#-----------
+time=14227010863
+mem_heap_B=142300
+mem_heap_extra_B=596
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=55
+#-----------
+time=14227011783
+mem_heap_B=142417
+mem_heap_extra_B=615
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=56
+#-----------
+time=14227012048
+mem_heap_B=142448
+mem_heap_extra_B=624
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=57
+#-----------
+time=14227015201
+mem_heap_B=142544
+mem_heap_extra_B=632
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=58
+#-----------
+time=14227016152
+mem_heap_B=142513
+mem_heap_extra_B=623
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=59
+#-----------
+time=14227016438
+mem_heap_B=142355
+mem_heap_extra_B=573
+mem_stacks_B=0
+heap_tree=detailed
+n5: 142355 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40104E8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40105F9: _dl_init (dl-init.c:30)
+    n0: 72704 0x4000CF8: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+ n1: 40040 0x43D30A: __gnu_cxx::new_allocator<pthread_mutex_t>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 40040 0x43C540: std::allocator_traits<std::allocator<pthread_mutex_t> >::allocate(std::allocator<pthread_mutex_t>&, unsigned long) (alloc_traits.h:491)
+   n1: 40040 0x43AE16: std::_Vector_base<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 40040 0x439849: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 40040 0x4382DF: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::resize(unsigned long) (stl_vector.h:676)
+      n1: 40040 0x435719: HttpServer::listen(int) (HttpServer.cpp:60)
+       n0: 40040 0x44A229: main (proxy.cpp:72)
+ n1: 16016 0x43D1D6: __gnu_cxx::new_allocator<std::shared_ptr<Socket> >::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 16016 0x43C452: std::allocator_traits<std::allocator<std::shared_ptr<Socket> > >::allocate(std::allocator<std::shared_ptr<Socket> >&, unsigned long) (alloc_traits.h:491)
+   n1: 16016 0x43AC6A: std::_Vector_base<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 16016 0x4395EC: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 16016 0x438253: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::resize(unsigned long) (stl_vector.h:676)
+      n1: 16016 0x435704: HttpServer::listen(int) (HttpServer.cpp:59)
+       n0: 16016 0x44A229: main (proxy.cpp:72)
+ n1: 8008 0x43E062: __gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 8008 0x43D64D: std::allocator_traits<std::allocator<unsigned long> >::allocate(std::allocator<unsigned long>&, unsigned long) (alloc_traits.h:491)
+   n1: 8008 0x43C9F8: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 8008 0x43B809: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_create_storage(unsigned long) (stl_vector.h:185)
+     n1: 8008 0x43A365: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_Vector_base(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:136)
+      n1: 8008 0x438CAA: std::vector<unsigned long, std::allocator<unsigned long> >::vector(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:278)
+       n1: 8008 0x43633E: HttpServer::start() (HttpServer.cpp:217)
+        n0: 8008 0x44A254: main (proxy.cpp:74)
+ n0: 5587 in 23 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=60
+#-----------
+time=14227016534
+mem_heap_B=142259
+mem_heap_extra_B=565
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=61
+#-----------
+time=14227016756
+mem_heap_B=142163
+mem_heap_extra_B=557
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=62
+#-----------
+time=14227017000
+mem_heap_B=142067
+mem_heap_extra_B=549
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=63
+#-----------
+time=14227017113
+mem_heap_B=141651
+mem_heap_extra_B=541
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=64
+#-----------
+time=14227017245
+mem_heap_B=141627
+mem_heap_extra_B=525
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=65
+#-----------
+time=14227019673
+mem_heap_B=141658
+mem_heap_extra_B=534
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=66
+#-----------
+time=14227019908
+mem_heap_B=141689
+mem_heap_extra_B=543
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=67
+#-----------
+time=14227020010
+mem_heap_B=141658
+mem_heap_extra_B=534
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=68
+#-----------
+time=14227020506
+mem_heap_B=141689
+mem_heap_extra_B=543
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=69
+#-----------
+time=14227020936
+mem_heap_B=141750
+mem_heap_extra_B=554
+mem_stacks_B=0
+heap_tree=detailed
+n5: 141750 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40104E8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40105F9: _dl_init (dl-init.c:30)
+    n0: 72704 0x4000CF8: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+ n1: 40040 0x43D30A: __gnu_cxx::new_allocator<pthread_mutex_t>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 40040 0x43C540: std::allocator_traits<std::allocator<pthread_mutex_t> >::allocate(std::allocator<pthread_mutex_t>&, unsigned long) (alloc_traits.h:491)
+   n1: 40040 0x43AE16: std::_Vector_base<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 40040 0x439849: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 40040 0x4382DF: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::resize(unsigned long) (stl_vector.h:676)
+      n1: 40040 0x435719: HttpServer::listen(int) (HttpServer.cpp:60)
+       n0: 40040 0x44A229: main (proxy.cpp:72)
+ n1: 16016 0x43D1D6: __gnu_cxx::new_allocator<std::shared_ptr<Socket> >::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 16016 0x43C452: std::allocator_traits<std::allocator<std::shared_ptr<Socket> > >::allocate(std::allocator<std::shared_ptr<Socket> >&, unsigned long) (alloc_traits.h:491)
+   n1: 16016 0x43AC6A: std::_Vector_base<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 16016 0x4395EC: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 16016 0x438253: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::resize(unsigned long) (stl_vector.h:676)
+      n1: 16016 0x435704: HttpServer::listen(int) (HttpServer.cpp:59)
+       n0: 16016 0x44A229: main (proxy.cpp:72)
+ n1: 8008 0x43E062: __gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 8008 0x43D64D: std::allocator_traits<std::allocator<unsigned long> >::allocate(std::allocator<unsigned long>&, unsigned long) (alloc_traits.h:491)
+   n1: 8008 0x43C9F8: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 8008 0x43B809: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_create_storage(unsigned long) (stl_vector.h:185)
+     n1: 8008 0x43A365: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_Vector_base(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:136)
+      n1: 8008 0x438CAA: std::vector<unsigned long, std::allocator<unsigned long> >::vector(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:278)
+       n1: 8008 0x43633E: HttpServer::start() (HttpServer.cpp:217)
+        n0: 8008 0x44A254: main (proxy.cpp:74)
+ n0: 4982 in 23 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=70
+#-----------
+time=14227021032
+mem_heap_B=141719
+mem_heap_extra_B=545
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=71
+#-----------
+time=14235468342
+mem_heap_B=141627
+mem_heap_extra_B=525
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=72
+#-----------
+time=14241099623
+mem_heap_B=141563
+mem_heap_extra_B=517
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=73
+#-----------
+time=14241099755
+mem_heap_B=141539
+mem_heap_extra_B=501
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=74
+#-----------
+time=14241100163
+mem_heap_B=141443
+mem_heap_extra_B=493
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=75
+#-----------
+time=14241100569
+mem_heap_B=141412
+mem_heap_extra_B=484
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=76
+#-----------
+time=14241100855
+mem_heap_B=141254
+mem_heap_extra_B=450
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=77
+#-----------
+time=14241100951
+mem_heap_B=141158
+mem_heap_extra_B=442
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=78
+#-----------
+time=14241101173
+mem_heap_B=141062
+mem_heap_extra_B=434
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=79
+#-----------
+time=14241101417
+mem_heap_B=140966
+mem_heap_extra_B=426
+mem_stacks_B=0
+heap_tree=detailed
+n5: 140966 (heap allocation functions) malloc/new/new[], --alloc-fns, etc.
+ n1: 72704 0x4EBAEFE: ??? (in /usr/lib/x86_64-linux-gnu/libstdc++.so.6.0.21)
+  n1: 72704 0x40104E8: call_init.part.0 (dl-init.c:72)
+   n1: 72704 0x40105F9: _dl_init (dl-init.c:30)
+    n0: 72704 0x4000CF8: ??? (in /lib/x86_64-linux-gnu/ld-2.23.so)
+ n1: 40040 0x43D30A: __gnu_cxx::new_allocator<pthread_mutex_t>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 40040 0x43C540: std::allocator_traits<std::allocator<pthread_mutex_t> >::allocate(std::allocator<pthread_mutex_t>&, unsigned long) (alloc_traits.h:491)
+   n1: 40040 0x43AE16: std::_Vector_base<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 40040 0x439849: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 40040 0x4382DF: std::vector<pthread_mutex_t, std::allocator<pthread_mutex_t> >::resize(unsigned long) (stl_vector.h:676)
+      n1: 40040 0x435719: HttpServer::listen(int) (HttpServer.cpp:60)
+       n0: 40040 0x44A229: main (proxy.cpp:72)
+ n1: 16016 0x43D1D6: __gnu_cxx::new_allocator<std::shared_ptr<Socket> >::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 16016 0x43C452: std::allocator_traits<std::allocator<std::shared_ptr<Socket> > >::allocate(std::allocator<std::shared_ptr<Socket> >&, unsigned long) (alloc_traits.h:491)
+   n1: 16016 0x43AC6A: std::_Vector_base<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 16016 0x4395EC: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::_M_default_append(unsigned long) (vector.tcc:557)
+     n1: 16016 0x438253: std::vector<std::shared_ptr<Socket>, std::allocator<std::shared_ptr<Socket> > >::resize(unsigned long) (stl_vector.h:676)
+      n1: 16016 0x435704: HttpServer::listen(int) (HttpServer.cpp:59)
+       n0: 16016 0x44A229: main (proxy.cpp:72)
+ n1: 8008 0x43E062: __gnu_cxx::new_allocator<unsigned long>::allocate(unsigned long, void const*) (new_allocator.h:104)
+  n1: 8008 0x43D64D: std::allocator_traits<std::allocator<unsigned long> >::allocate(std::allocator<unsigned long>&, unsigned long) (alloc_traits.h:491)
+   n1: 8008 0x43C9F8: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_allocate(unsigned long) (stl_vector.h:170)
+    n1: 8008 0x43B809: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_M_create_storage(unsigned long) (stl_vector.h:185)
+     n1: 8008 0x43A365: std::_Vector_base<unsigned long, std::allocator<unsigned long> >::_Vector_base(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:136)
+      n1: 8008 0x438CAA: std::vector<unsigned long, std::allocator<unsigned long> >::vector(unsigned long, std::allocator<unsigned long> const&) (stl_vector.h:278)
+       n1: 8008 0x43633E: HttpServer::start() (HttpServer.cpp:217)
+        n0: 8008 0x44A254: main (proxy.cpp:74)
+ n0: 4198 in 23 places, all below massif's threshold (1.00%)
+#-----------
+snapshot=80
+#-----------
+time=14241101749
+mem_heap_B=140622
+mem_heap_extra_B=410
+mem_stacks_B=0
+heap_tree=empty
+#-----------
+snapshot=81
+#-----------
+time=16800014757
+mem_heap_B=139598
+mem_heap_extra_B=402
+mem_stacks_B=0
+heap_tree=empty

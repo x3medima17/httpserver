@@ -50,7 +50,6 @@ class Hello : public RequestHandler
 
 int main()
 {
-
     std::map<std::string, std::shared_ptr<Utils::iHandler>> Handlers;
 
     Handlers = {
@@ -67,7 +66,7 @@ int main()
     HttpServer server(app);
     server.bind(8081);
 
-    server.listen(100);
+    server.listen(1000);
     std::cout<<"Starting server...\n"<<std::endl;
     server.start();
     return 0;

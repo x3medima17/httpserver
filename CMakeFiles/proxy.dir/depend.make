@@ -29,6 +29,7 @@ CMakeFiles/proxy.dir/src/HttpClient.cpp.o: include/HttpMessage.h
 CMakeFiles/proxy.dir/src/HttpClient.cpp.o: include/HttpRequest.h
 CMakeFiles/proxy.dir/src/HttpClient.cpp.o: include/HttpResponse.h
 CMakeFiles/proxy.dir/src/HttpClient.cpp.o: include/HttpServer.h
+CMakeFiles/proxy.dir/src/HttpClient.cpp.o: include/Logger.h
 CMakeFiles/proxy.dir/src/HttpClient.cpp.o: include/RequestHandler.h
 CMakeFiles/proxy.dir/src/HttpClient.cpp.o: include/socket.h
 CMakeFiles/proxy.dir/src/HttpClient.cpp.o: include/utils.h
@@ -51,6 +52,7 @@ CMakeFiles/proxy.dir/src/HttpResponse.cpp.o: include/HttpMessage.h
 CMakeFiles/proxy.dir/src/HttpResponse.cpp.o: include/HttpRequest.h
 CMakeFiles/proxy.dir/src/HttpResponse.cpp.o: include/HttpResponse.h
 CMakeFiles/proxy.dir/src/HttpResponse.cpp.o: include/HttpServer.h
+CMakeFiles/proxy.dir/src/HttpResponse.cpp.o: include/Logger.h
 CMakeFiles/proxy.dir/src/HttpResponse.cpp.o: include/RequestHandler.h
 CMakeFiles/proxy.dir/src/HttpResponse.cpp.o: include/socket.h
 CMakeFiles/proxy.dir/src/HttpResponse.cpp.o: include/utils.h
